@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={publicSans.className}>{children}</body>
+    <html lang="en" className="min-h-screen">
+      <body className={publicSans.className + "min-h-screen"}>{children}</body>
     </html>
   );
 }

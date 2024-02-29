@@ -1,3 +1,10 @@
+import { PageContainer } from "@/ui/layouts";
+import { AkanDatang } from "@/ui/pages";
+
 export default function Home() {
-  return <>this is comming soon</>;
+  return (
+    <PageContainer>
+      <AkanDatang />
+    </PageContainer>
+  );
 }
