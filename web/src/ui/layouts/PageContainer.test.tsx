@@ -5,7 +5,6 @@ import { PageContainer } from ".";
 // Prompt:
 // Write a jest jsdom test for the imported PageContainer component.
 // The test test that component is loaded properly
-
 describe("PageContainer", () => {
   it("should render the PageContainer component", () => {
     render(

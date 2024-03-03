@@ -2,8 +2,8 @@ import { Metadata } from "next";
 
 export const defaultSiteMeta = {
   title: "Iklan Raya Lagi (IRL)",
-  description:
-    "Koleksi iklan raya dari se-Nusantara, Malaysia, Singapore, Indonesia, and Brunei.",
+  shortName: "Iklan Raya Lagi",
+  description: "Koleksi iklan raya sepanjang zaman",
   siteUrl: "https://IklanRayaLagi.com",
 };
 
