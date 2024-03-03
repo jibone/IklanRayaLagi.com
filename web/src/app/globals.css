@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-stroke-fx {
+  -webkit-text-stroke-width: 2px;
+  -moz-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #14151d;
+  -moz-text-stroke-color: #14151d;
+  color: transparent;
+}
+
+.text-shadow-fx {
+  text-shadow: 3px 3px #c0b6f9;
+}
