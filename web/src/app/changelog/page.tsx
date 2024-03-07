@@ -1,4 +1,4 @@
-import type { ChangelogFrontmatter } from "@/models/MDXChangelog";
+import type { ChangelogFrontmatter } from "@/ui/pages/ChangelogPage";
 import fs from "fs";
 import { PageContainer } from "@/ui/layouts";
 import { ChangelogPage } from "@/ui/pages";
