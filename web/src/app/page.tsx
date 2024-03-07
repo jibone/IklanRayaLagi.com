@@ -1,10 +1,10 @@
 import { PageContainer } from "@/ui/layouts";
-import { AkanDatang } from "@/ui/pages";
+import { AkanDatangPage } from "@/ui/pages";
 
 export default function Home() {
   return (
     <PageContainer>
-      <AkanDatang />
+      <AkanDatangPage />
     </PageContainer>
   );
 }

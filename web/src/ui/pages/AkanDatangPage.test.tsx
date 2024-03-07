@@ -1,10 +1,10 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import { AkanDatang } from ".";
+import { AkanDatangPage } from ".";
 
-describe("AkanDatang", () => {
-  it("renders the page component", () => {
-    render(<AkanDatang />);
+describe("AkanDatangPage", () => {
+  it("should render the AkanDatangPage component", () => {
+    render(<AkanDatangPage />);
     const heading = screen.getByText("Akan datang");
     expect(heading).toBeInTheDocument();
   });

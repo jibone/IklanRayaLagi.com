@@ -1,3 +1,4 @@
-import AkanDatang from "./AkanDatang";
+import AkanDatangPage from "./AkanDatangPage";
+import ChangelogPage from "./ChangelogPage";
 
-export { AkanDatang };
+export { AkanDatangPage, ChangelogPage };

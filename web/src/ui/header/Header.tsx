@@ -4,13 +4,15 @@ export default function Header() {
   return (
     <header
       data-testid="header"
-      className="flex justify-between bg-white border-b-4 border-black py-4 px-5 md:py-8 md:px-10"
+      className="bg-white border-b-4 border-black py-4 px-5 md:py-8 md:px-10"
     >
-      <div>
-        <TitleBar />
-      </div>
-      <div>
-        <ColorBox />
+      <div className="flex justify-between mx-auto max-w-screen-2xl">
+        <div>
+          <TitleBar />
+        </div>
+        <div>
+          <ColorBox />
+        </div>
       </div>
     </header>
   );
