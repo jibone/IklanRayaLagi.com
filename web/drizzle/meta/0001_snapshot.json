@@ -1,0 +1,98 @@
+{
+  "id": "cc91109a-d956-40b5-87b7-d000c3f6bee9",
+  "prevId": "f755b6db-5782-4780-8443-284a6c2263eb",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "iklan": {
+      "name": "iklan",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(180)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "year": {
+          "name": "year",
+          "type": "varchar(5)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "country": {
+          "name": "country",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "organization": {
+          "name": "organization",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "year_idx": {
+          "name": "year_idx",
+          "columns": [
+            "year"
+          ],
+          "isUnique": false
+        },
+        "country_idx": {
+          "name": "country_idx",
+          "columns": [
+            "country"
+          ],
+          "isUnique": false
+        },
+        "organization_idx": {
+          "name": "organization_idx",
+          "columns": [
+            "organization"
+          ],
+          "isUnique": false
+        },
+        "slug_idx": {
+          "name": "slug_idx",
+          "columns": [
+            "slug"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "iklan_slug_unique": {
+          "name": "iklan_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      }
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

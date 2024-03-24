@@ -8,7 +8,7 @@ export default async function OGDefaultImage() {
   const baseUrl = getBaseUrl();
   const { publicSansRegular, publicSansBlack, publicSansBlackItalic } =
     await OGFonts();
-  const imgSrc = `${baseUrl}/imgs/budak-tengok-tv.png`;
+  const imgSrc = `${baseUrl}/imgs/budak-tengok-tv-small.png`;
 
   // TODO: See if it is possible to break this down so we can reuse this...
   return new ImageResponse(
@@ -18,9 +18,9 @@ export default async function OGDefaultImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          backgroundColor: "#c0b6f9",
           alignItems: "center",
           justifyContent: "center",
+          backgroundColor: "#c0b6f9",
         }}
       >
         <div // box container
