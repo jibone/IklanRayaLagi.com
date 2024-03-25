@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(defaultSiteMeta.siteUrl),
   title: {
     default: defaultSiteMeta.title,
-    template: `${defaultSiteMeta} / %s`,
+    template: `${defaultSiteMeta.title} > %s`,
   },
   description: defaultSiteMeta.description,
 };
