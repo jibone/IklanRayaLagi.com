@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Projek ini dibangunkan dengan kerangka [Next.js](https://nextjs.org) yang pada mulanya di-bootstrap dari [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+Buat masa ini, projek ini rasanya tidak kana dapat berfungsi dengan sepenuhnya jika local environment tiada kunci kata rahsia seperti `POSTGRES_HOST`, `POSTGRES_USER`, `POSTGRES_PASSWORD`. Semasa men-devolope local disambungnya terus ke Vercel Postgres. Ini untuk memudahkan proses menaikmuatkan data. Tak perlu CMS, hanya guna [Drizzle Studio](https://orm.drizzle.team/drizzle-studio/overview).
 
-First, run the development server:
+Ini bukan satu setup yang ideal. Mungkin bila ada masa sikit boleh di-setup-kan Docker dan local Postgres dengan seed data bagi peng-develop-an local.
+
+## Command dan fungsinya.
+
+Berikut adalah senarai scripts command di `package.json` dan fungsinya.
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Memulakan local development server bagi Next.js. Akan recompile bila ada sebarang perubahan code yang di-save. Reloading code secara panas.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Build project untuk production dengan segala optiminasi code yang perlu dioptiminasikan.
 
-## Learn More
+```bash
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+Memulakan server Next.js untuk serving production code. Aplikasi harus di-compile dengan command `npm run build` terlebih dahulu.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run lint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Memulakan process linting kepada codebase. Kalau ada apa-apa yang tak kena, kebiasaannya akan keluar bila run command ini.
 
-## Deploy on Vercel
+```bash
+npm run test
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Memulakan test runner jest. Menguji kesemua code dengan ujian berunit.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+npm run test:watch
+```
+
+Sama seperti di atas, cuma command ini akan lebih peka pada perubahan file. Dia ada file save, dia run.
+
+```bash
+npm run db:generate
+```
+
+Akan men-generate-kan migration file berdasarkan schema yang kita tulis.
+
+```bash
+npm run db:introspect
+```
+
+Akan periksa database yang sedia ada kalau ada perubahan schema, akan men-generate-kan file schema sebagaimana yang ada di database.
+
+```bash
+npm run db:push
+```
+
+Tolak schema local ke database terus.
+
+```bash
+npm run db:drop
+```
+
+Jangan. Bahaya. Jatuhkan migration yang baru dibuat. Kalau tersilap migrate, baru guna.
+
+```bash
+npm run db:up
+```
+
+Pastikan database berada pada migrasi yang terkini.
+
+```bash
+npm run db:check
+```
+
+Periksa konsistensi migrasi.
+
+```bash
+npm run db:studio
+```
+
+Mulakan server Drizzle Studio. Guna untuk update data secara direct.
