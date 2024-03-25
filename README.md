@@ -18,6 +18,10 @@ Sepermula projek ini, satu penetapan design dah dibuat, iaitu keputusan untuk ti
 
 Ke-open-source-an projek ini lebih kepada hanya sekadar perkongsian. Sesiapa sahaja bebas untuk mengopi (to copy), memodifikasi (to modify), mengompile (to compile), mendistributasikan (to distribute) code dalam repo ini. Segala code diberi tanpa sebarang jaminan dari si penyelia [@jibone](https://twitter.com/jibone). Boleh baca lebih lanjut di [LICENSE](LICENSE).
 
-## Macam mana nak Get In Touch
+## Pemberitahuan (disclaimer)
+
+Sebeberapa bahagian dari codebase ditulis dengan bantuan ChatGPT. Maka dengan itu, anggap sahaja lah kalau ada code yang nampak buruk itu dari ChatGPT, code yang nampak elok itu dari si penyelia [@jibone](https://twitter.com/jibone).
+
+## Cara berhubung
 
 Si penyelia, pengelola, dan kurator website [iklanrayalagi.com](https://iklanrayalagi.com) iaitu saudara [@jibone](https://twitter.com/jibone) lebih gemar jika dihubungi di X(dulunya Twitter). Kalau anda follow, lagi cepat dia respon. Janji, tak tipu.
