@@ -1,8 +1,8 @@
 Projek ini dibangunkan dengan kerangka [Next.js](https://nextjs.org) yang pada mulanya di-bootstrap dari [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Buat masa ini, projek ini rasanya tidak kana dapat berfungsi dengan sepenuhnya jika local environment tiada kunci kata rahsia seperti `POSTGRES_HOST`, `POSTGRES_USER`, `POSTGRES_PASSWORD`. Semasa men-devolope local disambungnya terus ke Vercel Postgres. Ini untuk memudahkan proses menaikmuatkan data. Tak perlu CMS, hanya guna [Drizzle Studio](https://orm.drizzle.team/drizzle-studio/overview).
+Buat masa ini, projek ini rasanya tidak akan dapat berfungsi dengan sepenuhnya jika local environment tiada kunci kata rahsia seperti `POSTGRES_HOST`, `POSTGRES_USER`, `POSTGRES_PASSWORD`. Semasa men-devolope di lokal, disambungnya terus ke Vercel Postgres. Ini untuk memudahkan proses menaikmuatkan data. Tak perlu CMS, hanya guna [Drizzle Studio](https://orm.drizzle.team/drizzle-studio/overview).
 
-Ini bukan satu setup yang ideal. Mungkin bila ada masa sikit boleh di-setup-kan Docker dan local Postgres dengan seed data bagi peng-develop-an local.
+Ini bukan satu setup yang ideal. Mana mungkin disambungnya terus dari lokal ke database production? Ini melangga tabii segala _best practice_ yang selalu dicanang software engineer berpengalaman. Mungkin bila ada masa sikit boleh di-setup-kan Docker dan local Postgres dengan seed data bagi peng-develop-an local. Bolehlah cuba di lokal nanti.
 
 ## Command dan fungsinya.
 
@@ -66,7 +66,7 @@ Tolak schema local ke database terus.
 npm run db:drop
 ```
 
-Jangan. Bahaya. Jatuhkan migration yang baru dibuat. Kalau tersilap migrate, baru guna.
+Jangan. Bahaya. Men-rollback migration yang baru dibuat. Kalau tersilap migrate, baru guna. Telajak perahu boleh diundur, telajak _drop database_ buruk padahnya.
 
 ```bash
 npm run db:up
