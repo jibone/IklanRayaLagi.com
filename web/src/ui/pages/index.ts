@@ -4,6 +4,7 @@ import IklanRayePage from "./IklanRayePage";
 import TahunPage from "./TahunPage";
 import NegaraPage from "./NegaraPage";
 import OrganisasiPage from "./OrganisasiPage";
+import TakJumpaPage from "./TakJumpaPage";
 
 export {
   AkanDatangPage,
@@ -12,4 +13,5 @@ export {
   TahunPage,
   NegaraPage,
   OrganisasiPage,
+  TakJumpaPage,
 };
