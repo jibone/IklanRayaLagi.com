@@ -15,7 +15,7 @@ describe("NegaraPage", () => {
     const mockedProps = {
       negara: "malaysia" as CountryList,
       senaraiNegara: ["malaysia", "indonesia", "singapore"] as CountryList[],
-      koleksiIklanRaye: [],
+      koleksiIklan: [],
     };
 
     render(<NegaraPage {...mockedProps} />);

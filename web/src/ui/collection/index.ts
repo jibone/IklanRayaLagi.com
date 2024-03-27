@@ -1,4 +1,4 @@
-import VideoCollection from "./VideoCollection";
-import VideoItem from "./VideoItem";
+import KoleksiKadIklan from "./KoleksiKadIklan";
+import KadIklan from "./KadIklan";
 
-export { VideoCollection, VideoItem };
+export { KoleksiKadIklan, KadIklan };

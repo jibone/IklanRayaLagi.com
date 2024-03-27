@@ -23,7 +23,7 @@ describe("OrganisasiPage", () => {
           name: "this is test 1",
         },
       ],
-      koleksiIklanRaye: [],
+      koleksiIklan: [],
     };
 
     render(<OrganisasiPage {...mockedProps} />);

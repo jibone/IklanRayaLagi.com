@@ -1,17 +1,17 @@
 import type { Iklan } from "@/db/schema/iklan";
-import { VideoCollection } from "@/ui/collection";
+import { KoleksiKadIklan } from "@/ui/collection";
 import { YearListBox } from "@/ui/listbox";
 
 type TahunPageProps = {
   tahun: string;
   senaraiTahun: string[];
-  koleksiVid: Iklan[];
+  koleksiIklan: Iklan[];
 };
 
 export default function TahunPage({
   tahun,
   senaraiTahun,
-  koleksiVid,
+  koleksiIklan,
 }: TahunPageProps) {
   return (
     <div
@@ -27,7 +27,7 @@ export default function TahunPage({
         </div>
 
         <div className="mt-4 mb-6">
-          <VideoCollection videoCollection={koleksiVid} pill="country" />
+          <KoleksiKadIklan koleksiIklan={koleksiIklan} pill="country" />
         </div>
       </div>
     </div>

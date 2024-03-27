@@ -1,18 +1,18 @@
 import type { Iklan } from "@/db/schema/iklan";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import { VideoCollection } from ".";
+import { KoleksiKadIklan } from ".";
 
 // Prompt:
 // Write a jest jsdom test for the imported VideoCollection component.
 // The test test that component is loaded properly
 
-describe("VideoCollection", () => {
-  it("should render the VideoCollection component", () => {
+describe("KoleksiKadIklan", () => {
+  it("should render the KoleksiKadIklan component", () => {
     const mockedProps = {
-      videoCollection: [
+      koleksiIklan: [
         {
-          id: "XXXXXXXXX",
+          id: "XXX",
           title: "testing title je",
           year: "2000",
           country: "indonesia",
@@ -24,8 +24,8 @@ describe("VideoCollection", () => {
     };
 
     render(
-      <VideoCollection
-        videoCollection={mockedProps.videoCollection}
+      <KoleksiKadIklan
+        koleksiIklan={mockedProps.koleksiIklan}
         pill={mockedProps.pill}
       />,
     );

@@ -1,16 +1,16 @@
 import type { Iklan } from "@/db/schema/iklan";
 import Link from "next/link";
 import { Player } from "@/ui/player";
-import { VideoCollection } from "@/ui/collection";
+import { KoleksiKadIklan } from "@/ui/collection";
 
 type IklanPageProps = {
   iklanRaye: Iklan;
-  koleksiIklanRaye: Iklan[];
+  koleksiIklan: Iklan[];
 };
 
 export default function IklanRayePage({
   iklanRaye,
-  koleksiIklanRaye,
+  koleksiIklan,
 }: IklanPageProps) {
   const iklanSrc = `https://www.youtube.com/watch?v=${iklanRaye.id}`;
 
@@ -77,7 +77,7 @@ export default function IklanRayePage({
           </div>
         </div>
 
-        <VideoCollection videoCollection={koleksiIklanRaye} pill="year" />
+        <KoleksiKadIklan koleksiIklan={koleksiIklan} pill="year" />
       </div>
     </div>
   );

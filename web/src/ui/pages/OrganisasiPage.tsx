@@ -1,18 +1,18 @@
 import type { Iklan } from "@/db/schema/iklan";
 import type { OrgOptions } from "@/ui/combobox/OrgComboBox";
-import { VideoCollection } from "@/ui/collection";
+import { KoleksiKadIklan } from "@/ui/collection";
 import { OrgComboBox } from "@/ui/combobox";
 
 type OrganisasiPageProps = {
   organisasi: OrgOptions;
   senaraiOrg: OrgOptions[];
-  koleksiIklanRaye: Iklan[];
+  koleksiIklan: Iklan[];
 };
 
 export default function OrganisasiPage({
   organisasi,
   senaraiOrg,
-  koleksiIklanRaye,
+  koleksiIklan,
 }: OrganisasiPageProps) {
   return (
     <div
@@ -26,7 +26,7 @@ export default function OrganisasiPage({
         </div>
 
         <div className="mt-4 mb-6">
-          <VideoCollection videoCollection={koleksiIklanRaye} pill="year" />
+          <KoleksiKadIklan koleksiIklan={koleksiIklan} pill="year" />
         </div>
       </div>
     </div>

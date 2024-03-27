@@ -65,7 +65,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
         <TahunPage
           tahun={slug}
           senaraiTahun={allYear}
-          koleksiVid={allYearIklans}
+          koleksiIklan={allYearIklans}
         />
       </PageContainer>
     );
@@ -81,7 +81,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
         <NegaraPage
           negara={slug as CountryList}
           senaraiNegara={allCountries as CountryList[]}
-          koleksiIklanRaye={allCountriesIklan}
+          koleksiIklan={allCountriesIklan}
         />
       </PageContainer>
     );
@@ -111,7 +111,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
         <OrganisasiPage
           organisasi={selectedOrg}
           senaraiOrg={allOrgsWithSlug}
-          koleksiIklanRaye={allOrgIklan}
+          koleksiIklan={allOrgIklan}
         />
       </PageContainer>
     );
@@ -123,10 +123,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
     const videoCollection = await IklanModel.getRandom();
     return (
       <PageContainer>
-        <IklanRayePage
-          iklanRaye={iklanResult}
-          koleksiIklanRaye={videoCollection}
-        />
+        <IklanRayePage iklanRaye={iklanResult} koleksiIklan={videoCollection} />
       </PageContainer>
     );
   }
