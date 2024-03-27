@@ -1,5 +1,5 @@
 import type { Iklan, CountryList } from "@/db/schema/iklan";
-import { KoleksiKadIklan } from "@/ui/collection";
+import { KoleksiKadIklan } from "@/ui/koleksi";
 import CountryListBox from "../listbox/CountryListBox";
 
 type NegaraPageProps = {

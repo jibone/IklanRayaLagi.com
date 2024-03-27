@@ -1,7 +1,7 @@
 import type { Iklan } from "@/db/schema/iklan";
 import Link from "next/link";
 import { Player } from "@/ui/player";
-import { KoleksiKadIklan } from "@/ui/collection";
+import { KoleksiKadIklan } from "@/ui/koleksi";
 
 type IklanPageProps = {
   iklanRaye: Iklan;

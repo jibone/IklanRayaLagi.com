@@ -1,6 +1,6 @@
 import type { Iklan } from "@/db/schema/iklan";
 import type { OrgOptions } from "@/ui/combobox/OrgComboBox";
-import { KoleksiKadIklan } from "@/ui/collection";
+import { KoleksiKadIklan } from "@/ui/koleksi";
 import { OrgComboBox } from "@/ui/combobox";
 
 type OrganisasiPageProps = {

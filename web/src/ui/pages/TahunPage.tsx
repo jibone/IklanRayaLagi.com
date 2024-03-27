@@ -1,5 +1,5 @@
 import type { Iklan } from "@/db/schema/iklan";
-import { KoleksiKadIklan } from "@/ui/collection";
+import { KoleksiKadIklan } from "@/ui/koleksi";
 import { YearListBox } from "@/ui/listbox";
 
 type TahunPageProps = {
