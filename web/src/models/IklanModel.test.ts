@@ -18,7 +18,7 @@ jest.mock("drizzle-orm/vercel-postgres", () => ({
         orderBy: mockedOrderBy,
       }),
     }),
-    execute: () => mockedExcute(),
+    execute: (input: any) => mockedExcute(input),
     select: () => ({
       from: () => ({
         where: mockedSelect,
@@ -149,6 +149,63 @@ describe("IklanModel", () => {
           expect(result).toEqual(undefined);
         });
       });
+    });
+  });
+
+  describe(".getStats", () => {
+    it("returns all stats", async () => {
+      const mockedData = {
+        totalIklan: "200",
+        totalIklanMalaysia: "100",
+        totalIklanIndonesia: "40",
+        totalIklanSingapura: "10",
+        tahunTerawal: "1999",
+        tahunTerlatest: "2001",
+      };
+      mockedExcute.mockImplementation((query) => {
+        const queryString = query.queryChunks[0].value[0];
+        const totalSql = `SELECT COUNT(id) FROM iklan`;
+        if (queryString === totalSql) {
+          return {
+            rawCount: 1,
+            rows: [{ count: mockedData.totalIklan }],
+          };
+        }
+
+        const negaraSql = `SELECT COUNT(id) FROM iklan WHERE country = `;
+        if (queryString === negaraSql) {
+          if (query.queryChunks[1] === "malaysia") {
+            return {
+              rawCount: 1,
+              rows: [{ count: mockedData.totalIklanMalaysia }],
+            };
+          }
+          if (query.queryChunks[1] === "indonesia") {
+            return {
+              rawCount: 1,
+              rows: [{ count: mockedData.totalIklanIndonesia }],
+            };
+          }
+          if (query.queryChunks[1] === "singapura") {
+            return {
+              rawCount: 1,
+              rows: [{ count: mockedData.totalIklanSingapura }],
+            };
+          }
+        }
+
+        const yearList = `SELECT DISTINCT year FROM iklan ORDER BY year asc`;
+        if (queryString === yearList) {
+          return {
+            rowCount: 1,
+            rows: [{ year: "1999" }, { year: "2000" }, { year: "2001" }],
+          };
+        }
+      });
+
+      const result = await IklanModel.getStats();
+
+      expect(result).toEqual(mockedData);
     });
   });
 });

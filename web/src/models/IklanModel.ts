@@ -6,6 +6,15 @@ import { iklan } from "@/db/schema/iklan";
 
 const DB = drizzle(vercelSql);
 
+type Stats = {
+  totalIklan: string;
+  totalIklanMalaysia: string;
+  totalIklanIndonesia: string;
+  totalIklanSingapura: string;
+  tahunTerawal: string;
+  tahunTerlatest: string;
+};
+
 export class IklanModel {
   static async getAllYears(): Promise<string[]> {
     const result = await DB.selectDistinctOn([iklan.year], { year: iklan.year })
@@ -83,5 +92,48 @@ export class IklanModel {
     if (result.length === 0) return undefined;
 
     return result[0];
+  }
+
+  static async getStats(): Promise<Stats> {
+    // get total iklan
+    let totalIklan = "";
+    const resultTotalIklan = await DB.execute(sql`SELECT COUNT(id) FROM iklan`);
+    if (resultTotalIklan.rowCount !== 0) {
+      totalIklan = resultTotalIklan.rows[0].count as string;
+    }
+
+    const getCountryStats = async (country: string) => {
+      let totalIklanNegara = "";
+      const resultTotalIklanNegara = await DB.execute(
+        sql`SELECT COUNT(id) FROM iklan WHERE country = ${country}`,
+      );
+      if (resultTotalIklanNegara.rowCount !== 0) {
+        totalIklanNegara = resultTotalIklanNegara.rows[0].count as string;
+      }
+      return totalIklanNegara;
+    };
+
+    const totalIklanMalaysia = await getCountryStats("malaysia");
+    const totalIklanIndonesia = await getCountryStats("indonesia");
+    const totalIklanSingapura = await getCountryStats("singapura");
+
+    const resultYear = await DB.execute(
+      sql`SELECT DISTINCT year FROM iklan ORDER BY year asc`,
+    );
+
+    const yearList = resultYear.rows.map((y) => {
+      return y.year;
+    });
+    const tahunTerawal = yearList[0] as string;
+    const tahunTerlatest = yearList[yearList.length - 1] as string;
+
+    return {
+      totalIklan,
+      totalIklanMalaysia,
+      totalIklanIndonesia,
+      totalIklanSingapura,
+      tahunTerawal,
+      tahunTerlatest,
+    };
   }
 }
