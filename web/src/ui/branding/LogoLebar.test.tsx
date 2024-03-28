@@ -1,23 +1,23 @@
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { TitleBar } from ".";
+import { LogoLebar } from ".";
 
 // Prompt:
-// Write a jest jsdom test for the imported TitleBar component.
+// Write a jest jsdom test for the imported LogoLebar component.
 // The test test that component is loaded properly
-describe("TitleBar", () => {
+describe("LogoLebar", () => {
   it("should render the TitleBar component", () => {
-    render(<TitleBar />);
-    const titleBar = screen.getByTestId("title-bar");
+    render(<LogoLebar />);
+    const titleBar = screen.getByTestId("logo-lebar-container");
     expect(titleBar).toBeInTheDocument();
   });
 
   describe("When right-click title bar", () => {
     it("should show the menu", () => {
-      render(<TitleBar />);
+      render(<LogoLebar />);
 
       waitFor(() => {
-        const titleBar = screen.getByTestId("title-bar");
+        const titleBar = screen.getByTestId("logo-lebar-container");
         fireEvent.contextMenu(titleBar);
       });
 

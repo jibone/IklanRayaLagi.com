@@ -84,7 +84,8 @@ export default function InformasiPage({
               pengkalan data iklan Hari Raya / Salam Lebaran yang terbesar di
               rantau ini
             </strong>
-            . Dari yang nostalgik sampai ke moden semuanya ada.
+            . Dari iklan-iklan yang nostalgik sehingga ke iklan Raya moden
+            semuanya ada.
           </p>
           <p className="mb-4 lg:text-xl">
             Sehingga kini, sebanyak <strong>{totalIklan}</strong> iklan telah
@@ -106,15 +107,17 @@ export default function InformasiPage({
           </p>
           <p className="mb-4 lg:text-xl">
             Iklan Raya semua bebas ditonton dengan sepuasnya hati tanpa
-            memerlukan sebarang pendaftaran. Anda boleh mula menerokaan di
+            memerlukan sebarang pendaftaran. Anda boleh menerokaan{" "}
+            <strong>pengkalan data iklan Raya terbesar</strong> ini bermula di
             halaman <LinkWrap name="muka depan" url="/" />, dimana anda boleh
             pilih untuk menapis mengikut tahun, negara, atau cari iklan dari
             organisasi tertentu.
           </p>
           <p className="mb-6 lg:text-xl">
-            Jika anda tahu akan iklan yang tiada dalam rekod pengkalan data
-            iklan Hari Raya terbesar di rantau ini, boleh hubungi terus penyelia
-            dan kurator laman IklanRayaLagi.com, iaitu{" "}
+            Jika anda tahu akan iklan yang tiada dalam rekod{" "}
+            <strong>pengkalan data iklan Raya terbesar</strong> di rantau ini,
+            boleh hubungi terus penyelia dan kurator laman IklanRayaLagi.com,
+            iaitu{" "}
             <LinkWrap
               name="@jibone"
               url={

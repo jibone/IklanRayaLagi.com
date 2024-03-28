@@ -10,8 +10,8 @@ describe("Header", () => {
     render(<Header />);
 
     const header = screen.getByTestId("header");
-    const colorBox = screen.getByTestId("color-box");
-    const titleBar = screen.getByTestId("title-bar");
+    const colorBox = screen.getByTestId("kotak-kaler-container");
+    const titleBar = screen.getByTestId("logo-lebar-container");
 
     expect(header).toBeInTheDocument();
     expect(colorBox).toBeInTheDocument();

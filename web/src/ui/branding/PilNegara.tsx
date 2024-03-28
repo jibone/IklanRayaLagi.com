@@ -1,7 +1,7 @@
-import type { CountryList } from "@/db/schema/iklan";
+import type { SenaraiNegara } from "@/db/schema/iklan";
 
-export default function CountryPill({ country }: { country: CountryList }) {
-  const flagEmoji = {
+export default function PilNegara({ negara }: { negara: SenaraiNegara }) {
+  const benderaEmoji = {
     malaysia: "🇲🇾 ",
     indonesia: "🇮🇩 ",
     singapura: "🇸🇬 ",
@@ -11,10 +11,10 @@ export default function CountryPill({ country }: { country: CountryList }) {
 
   return (
     <div
-      data-testid="country-pill-container"
+      data-testid="pil-negara-container"
       className="text-xs group-hover:text-2xl transition-all duration-300 px-1 py-1 group-hover:px-2 bg-white border border-black rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
     >
-      <span className="">{flagEmoji[country]}</span>
+      <span className="">{benderaEmoji[negara]}</span>
     </div>
   );
 }

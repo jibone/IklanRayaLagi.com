@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 
-export default function TitleBar() {
+export default function LogoLebar() {
   const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function TitleBar() {
     <div onContextMenu={handleRightClick}>
       <Link
         href="/"
-        data-testid="title-bar"
+        data-testid="logo-lebar-container"
         className="font-black text-2xl md:text-4xl"
         onContextMenu={handleRightClick}
       >

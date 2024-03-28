@@ -1,4 +1,4 @@
-import { ColorBox, TitleBar } from "@/ui/branding";
+import { KotakKaler, LogoLebar } from "@/ui/branding";
 
 export default function Header() {
   return (
@@ -8,10 +8,10 @@ export default function Header() {
     >
       <div className="flex justify-between mx-auto max-w-screen-2xl">
         <div>
-          <TitleBar />
+          <LogoLebar />
         </div>
         <div>
-          <ColorBox />
+          <KotakKaler />
         </div>
       </div>
     </header>

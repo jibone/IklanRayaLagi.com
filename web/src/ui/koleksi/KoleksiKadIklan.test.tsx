@@ -4,7 +4,7 @@ import { render, screen } from "@testing-library/react";
 import { KoleksiKadIklan } from ".";
 
 // Prompt:
-// Write a jest jsdom test for the imported VideoCollection component.
+// Write a jest jsdom test for the imported koleksiIklan component.
 // The test test that component is loaded properly
 
 describe("KoleksiKadIklan", () => {

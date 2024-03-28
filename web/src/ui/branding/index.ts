@@ -1,7 +1,7 @@
-import LogoSmall from "./LogoSmall";
-import ColorBox from "./ColorBox";
-import TitleBar from "./TitleBar";
-import YearColorPill from "./YearColor";
-import CountryPill from "./CountryPill";
+import LogoKecil from "./LogoKecil";
+import KotakKaler from "./KotakKaler";
+import LogoLebar from "./LogoLebar";
+import PilTahun from "./PilTahun";
+import PilNegara from "./PilNegara";
 
-export { LogoSmall, ColorBox, TitleBar, YearColorPill, CountryPill };
+export { LogoKecil, KotakKaler, LogoLebar, PilTahun, PilNegara };

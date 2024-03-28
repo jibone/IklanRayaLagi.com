@@ -1,14 +1,13 @@
 import type { Iklan } from "@/db/schema/iklan";
 import Link from "next/link";
 import { YTThumbnail } from "@/ui/thumbnail";
-import { CountryPill } from "@/ui/branding";
+import { PilNegara } from "@/ui/branding";
 
 type KadIklanProps = {
   iklan: Iklan;
-  pill: "year" | "country";
 };
 
-export default function KadIklan({ iklan, pill }: KadIklanProps) {
+export default function KadIklan({ iklan }: KadIklanProps) {
   return (
     <Link
       href={`/${iklan.slug}`}
@@ -21,7 +20,7 @@ export default function KadIklan({ iklan, pill }: KadIklanProps) {
         <div className="font-semibold text-base lg:text-lg">{iklan.title}</div>
         <div className="relative">
           <div className="absolute z-50 -bottom-5 -right-7">
-            <CountryPill country={iklan.country} />
+            <PilNegara negara={iklan.country} />
           </div>
         </div>
       </div>

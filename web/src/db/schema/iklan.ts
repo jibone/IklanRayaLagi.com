@@ -24,7 +24,7 @@ export const iklan = pgTable(
 
 export type Iklan = typeof iklan.$inferSelect;
 export type NewIklan = typeof iklan.$inferInsert;
-export type CountryList =
+export type SenaraiNegara =
   | "malaysia"
   | "indonesia"
   | "singapura"

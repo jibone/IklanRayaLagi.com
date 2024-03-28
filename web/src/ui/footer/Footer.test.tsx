@@ -11,11 +11,11 @@ describe("Footer", () => {
 
     // these components must be loaded
     const footer = screen.getByTestId("footer");
-    const colorBox = screen.getByTestId("color-box");
-    const logoSmall = screen.getByTestId("logo-small");
+    const kotakKaler = screen.getByTestId("kotak-kaler-container");
+    const logoKecil = screen.getByTestId("logo-kecil-container");
 
     expect(footer).toBeInTheDocument();
-    expect(colorBox).toBeInTheDocument();
-    expect(logoSmall).toBeInTheDocument();
+    expect(kotakKaler).toBeInTheDocument();
+    expect(logoKecil).toBeInTheDocument();
   });
 });
