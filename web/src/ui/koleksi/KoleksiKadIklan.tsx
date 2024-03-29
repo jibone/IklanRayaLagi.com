@@ -3,12 +3,10 @@ import { KadIklan } from ".";
 
 type KoleksiKadIklanProps = {
   koleksiIklan: Iklan[];
-  pill: "year" | "country";
 };
 
 export default function KoleksiKadIklan({
   koleksiIklan,
-  pill,
 }: KoleksiKadIklanProps) {
   return (
     <div
@@ -16,7 +14,7 @@ export default function KoleksiKadIklan({
       className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
     >
       {koleksiIklan.map((iklan: Iklan) => {
-        return <KadIklan key={iklan.id} pill={pill} iklan={iklan} />;
+        return <KadIklan key={iklan.id} iklan={iklan} />;
       })}
     </div>
   );

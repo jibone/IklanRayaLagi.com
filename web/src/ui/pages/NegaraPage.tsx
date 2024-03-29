@@ -1,10 +1,10 @@
-import type { Iklan, CountryList } from "@/db/schema/iklan";
+import type { Iklan, SenaraiNegara } from "@/db/schema/iklan";
 import { KoleksiKadIklan } from "@/ui/koleksi";
 import CountryListBox from "../listbox/CountryListBox";
 
 type NegaraPageProps = {
-  negara: CountryList;
-  senaraiNegara: CountryList[];
+  negara: SenaraiNegara;
+  senaraiNegara: SenaraiNegara[];
   koleksiIklan: Iklan[];
 };
 
@@ -29,7 +29,7 @@ export default function NegaraPage({
           </span>
         </div>
         <div className="mt-4 mb-6">
-          <KoleksiKadIklan koleksiIklan={koleksiIklan} pill="year" />
+          <KoleksiKadIklan koleksiIklan={koleksiIklan} />
         </div>
       </div>
     </div>

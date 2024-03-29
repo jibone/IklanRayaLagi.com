@@ -77,7 +77,7 @@ export default function IklanRayePage({
           </div>
         </div>
 
-        <KoleksiKadIklan koleksiIklan={koleksiIklan} pill="year" />
+        <KoleksiKadIklan koleksiIklan={koleksiIklan} />
       </div>
     </div>
   );

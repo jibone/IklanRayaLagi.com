@@ -26,7 +26,7 @@ export default function OrganisasiPage({
         </div>
 
         <div className="mt-4 mb-6">
-          <KoleksiKadIklan koleksiIklan={koleksiIklan} pill="year" />
+          <KoleksiKadIklan koleksiIklan={koleksiIklan} />
         </div>
       </div>
     </div>

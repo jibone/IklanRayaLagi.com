@@ -27,7 +27,7 @@ export default function TahunPage({
         </div>
 
         <div className="mt-4 mb-6">
-          <KoleksiKadIklan koleksiIklan={koleksiIklan} pill="country" />
+          <KoleksiKadIklan koleksiIklan={koleksiIklan} />
         </div>
       </div>
     </div>

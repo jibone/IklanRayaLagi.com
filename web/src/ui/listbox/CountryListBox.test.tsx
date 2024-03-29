@@ -1,7 +1,6 @@
-import type { CountryList } from "@/db/schema/iklan";
+import type { SenaraiNegara } from "@/db/schema/iklan";
 import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { YearListBox } from ".";
 import CountryListBox from "./CountryListBox";
 
 // Prompt:
@@ -17,8 +16,8 @@ jest.mock("next/navigation", () => ({
 
 describe("CountryListBox", () => {
   const mockedProps = {
-    countryList: ["malaysia", "indonesia", "singapore"] as CountryList[],
-    countryCurrent: "malaysia" as CountryList,
+    countryList: ["malaysia", "indonesia", "singapore"] as SenaraiNegara[],
+    countryCurrent: "malaysia" as SenaraiNegara,
   };
 
   it("renders the component with the list of countries", () => {
