@@ -1,4 +1,4 @@
-import type { CountryList } from "@/db/schema/iklan";
+import type { SenaraiNegara } from "@/db/schema/iklan";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { NegaraPage } from ".";
@@ -13,8 +13,8 @@ jest.mock("next/navigation", () => ({
 describe("NegaraPage", () => {
   it("should render the NegaraPage component", () => {
     const mockedProps = {
-      negara: "malaysia" as CountryList,
-      senaraiNegara: ["malaysia", "indonesia", "singapore"] as CountryList[],
+      negara: "malaysia" as SenaraiNegara,
+      senaraiNegara: ["malaysia", "indonesia", "singapore"] as SenaraiNegara[],
       koleksiIklan: [],
     };
 

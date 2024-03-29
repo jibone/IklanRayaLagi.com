@@ -4,6 +4,7 @@ import OGIklanRayePage from "./OGIklanRayePage";
 import OGTahunPage from "./OGTahunPage";
 import OGNegaraPage from "./OGNegaraPage";
 import OGOrgPage from "./OGOrgPage";
+import OGBilikMedia from "./OGBilikMediaPage";
 
 export {
   OGFonts,
@@ -12,4 +13,5 @@ export {
   OGTahunPage,
   OGNegaraPage,
   OGOrgPage,
+  OGBilikMedia,
 };

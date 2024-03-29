@@ -131,7 +131,10 @@ export default function InformasiPage({
           </p>
           <p className="mb-6 lg:text-xl">
             Klik sini untuk{" "}
-            <LinkWrapButton url="/press-kit" label="Kit Media / Press Kit" />{" "}
+            <LinkWrapButton
+              url="/bilik_media"
+              label="Bilik Media / Press Kit"
+            />{" "}
           </p>
           <p className="mb-6 lg:text-xl">
             Jika mahu tahu lebih lanjut status development boleh cek{" "}

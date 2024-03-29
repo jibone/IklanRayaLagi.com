@@ -1,4 +1,4 @@
-import type { CountryList } from "@/db/schema/iklan";
+import type { SenaraiNegara } from "@/db/schema/iklan";
 import { IklanModel } from "@/models";
 import { PageContainer } from "@/ui/layouts";
 import {
@@ -79,8 +79,8 @@ export default async function Entry({ params }: { params: { slug: string } }) {
     return (
       <PageContainer>
         <NegaraPage
-          negara={slug as CountryList}
-          senaraiNegara={allCountries as CountryList[]}
+          negara={slug as SenaraiNegara}
+          senaraiNegara={allCountries as SenaraiNegara[]}
           koleksiIklan={allCountriesIklan}
         />
       </PageContainer>

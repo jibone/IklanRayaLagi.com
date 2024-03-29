@@ -86,20 +86,20 @@ export default async function OGNegaraPage({ negara }: { negara: string }) {
       fonts: [
         {
           weight: 900,
-          name: "Public_Sans",
           style: "normal",
+          name: "Public_Sans",
           data: publicSansBlack,
         },
         {
           weight: 900,
-          name: "Public_Sans",
           style: "italic",
+          name: "Public_Sans",
           data: publicSansBlackItalic,
         },
         {
           weight: 400,
-          name: "Public_Sans",
           style: "normal",
+          name: "Public_Sans",
           data: publicSansRegular,
         },
       ],

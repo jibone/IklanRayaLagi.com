@@ -61,10 +61,10 @@ export default function LogoLebar() {
           Halaman Informasi
         </Link>
         <Link
-          href="/press-kit"
+          href="/bilik_media"
           className="py-3 px-5 border-black border-b hover:bg-lila-400"
         >
-          Press Kit
+          Bilik Media (Press Release)
         </Link>
         <div className="py-3 px-4 text-sm bg-gray-200">
           Sebarang pertanyaan boleh berhubung terus dengan{" "}
