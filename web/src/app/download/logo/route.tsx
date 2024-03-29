@@ -5,7 +5,6 @@ import { getBaseUrl } from "@/utils/siteMeta";
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Logo Iklan Raya Lagi";
 export const contentType = "image/png";
 
 export async function GET() {
