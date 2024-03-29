@@ -46,18 +46,19 @@ export default function LogoLebar() {
         data-testid="context-menu-container"
         className={`${showMenu ? "visible" : "hidden"} flex flex-col overflow-clip mt-4 absolute w-96 bg-white rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`}
       >
-        <Link
+        <a
           href="/download/logo"
+          download={"Iklan_Raya_Lagi_logo"}
           className="py-3 px-5 border-black border-b hover:bg-lila-400"
         >
-          Download Logo <ArrowTopRightOnSquareIcon className="h-4 w-4 inline" />
-        </Link>
-        <Link
-          href="/download/banner"
-          className="py-3 px-5 border-black border-b hover:bg-lila-400"
-        >
-          Download Banner{" "}
+          Muat turun logo{" "}
           <ArrowTopRightOnSquareIcon className="h-4 w-4 inline" />
+        </a>
+        <Link
+          href="/informasi"
+          className="py-3 px-5 border-black border-b hover:bg-lila-400"
+        >
+          Halaman Informasi
         </Link>
         <Link
           href="/press-kit"
