@@ -9,6 +9,7 @@ export default async function OGDefaultImage() {
   const { publicSansRegular, publicSansBlack, publicSansBlackItalic } =
     await OGFonts();
   const imgSrc = `${baseUrl}/imgs/budak-tengok-tv-small.png`;
+  const bgImgSrc = `url('${baseUrl}/imgs/plus.svg')`;
 
   // TODO: See if it is possible to break this down so we can reuse this...
   return new ImageResponse(
@@ -25,33 +26,33 @@ export default async function OGDefaultImage() {
       >
         <div // box container
           style={{
-            display: "flex",
             width: 1100,
             height: 550,
-            backgroundColor: "#fce0c1",
-            borderWidth: "4px",
-            borderColor: "#14151d",
-            borderRadius: "20px",
-            boxShadow: "6px 6px 0px 0px rgba(0, 0, 0, 1)",
+            display: "flex",
             overflow: "hidden",
+            borderWidth: "4px",
+            borderRadius: "20px",
+            borderColor: "#14151d",
+            backgroundColor: "#fce0c1",
+            boxShadow: "6px 6px 0px 0px rgba(0, 0, 0, 1)",
           }}
         >
           <div // header title container
             style={{
-              display: "flex",
-              position: "relative",
               width: 1092,
               height: 100,
+              display: "flex",
               padding: "5px 10px",
               borderBottom: "2px",
+              position: "relative",
               borderColor: "#14151d",
               backgroundColor: "#f3f3f3",
             }}
           >
             <div // branding header container
               style={{
-                display: "flex",
                 fontSize: 50,
+                display: "flex",
                 fontWeight: 900,
                 marginTop: "10px",
                 marginLeft: "10px",
@@ -71,103 +72,109 @@ export default async function OGDefaultImage() {
             >
               <div
                 style={{
-                  display: "flex",
                   width: "40px",
                   height: "40px",
-                  borderRadius: "100px",
+                  display: "flex",
+                  marginLeft: "20px",
                   borderWidth: "2px",
+                  borderRadius: "100px",
                   borderColor: "#14151d",
                   backgroundColor: "#fce0c1",
                   boxShadow: "4px 4px 0px 0px rgba(0, 0, 0, 1)",
-                  marginLeft: "20px",
                 }}
               />
               <div
                 style={{
-                  display: "flex",
                   width: "40px",
                   height: "40px",
-                  borderRadius: "100px",
+                  display: "flex",
+                  marginLeft: "20px",
                   borderWidth: "2px",
+                  borderRadius: "100px",
                   borderColor: "#14151d",
                   backgroundColor: "#b0cdd4",
                   boxShadow: "4px 4px 0px 0px rgba(0, 0, 0, 1)",
-                  marginLeft: "20px",
                 }}
               />
               <div
                 style={{
-                  display: "flex",
                   width: "40px",
                   height: "40px",
-                  borderRadius: "100px",
+                  display: "flex",
+                  marginLeft: "20px",
                   borderWidth: "2px",
+                  borderRadius: "100px",
                   borderColor: "#14151d",
                   backgroundColor: "#efbec6",
                   boxShadow: "4px 4px 0px 0px rgba(0, 0, 0, 1)",
-                  marginLeft: "20px",
                 }}
               />
             </div>
           </div>
           <div
             style={{
-              display: "flex",
-              position: "absolute",
-              top: "120px",
-              left: "20px",
               width: 400,
               height: 400,
-              borderWidth: "2px",
-              borderColor: "#14151d",
-              borderRadius: "20px",
-              boxShadow: "6px 6px 0px 0px rgba(0, 0, 0, 1)",
+              top: "120px",
+              left: "20px",
+              display: "flex",
               overflow: "hidden",
+              borderWidth: "2px",
+              position: "absolute",
+              borderRadius: "20px",
+              borderColor: "#14151d",
+              boxShadow: "6px 6px 0px 0px rgba(0, 0, 0, 1)",
             }}
           >
             <img src={imgSrc} alt="no effect here" width="400" height="400" />
           </div>
           <div
             style={{
-              display: "flex",
-              position: "absolute",
+              width: 600,
+              height: 500,
               top: "120px",
-              left: "500px",
+              left: "450px",
+              display: "flex",
               fontWeight: 900,
-              width: "500px",
               color: "#14151d",
+              position: "absolute",
+              backgroundImage: bgImgSrc,
             }}
           >
             <div
               style={{
-                display: "flex",
-                fontSize: 70,
-                position: "absolute",
                 top: "0px",
+                fontSize: 70,
+                display: "flex",
+                position: "absolute",
+                backgroundColor: "#fce0c1",
               }}
             >
               Koleksi
             </div>
             <div
               style={{
+                width: 500,
+                top: "75px",
+                height: 150,
+                fontSize: 60,
                 display: "flex",
-                fontSize: 95,
-                top: "70px",
-                color: "#aa9cf7",
+                backgroundColor: "#fce0c1",
               }}
             >
-              Iklan Raya
+              Pengkalan Data Iklan Raya
             </div>
             <div
               style={{
-                display: "flex",
-                fontSize: 60,
-                position: "absolute",
-                top: "175px",
                 left: "0px",
+                top: "215px",
+                fontSize: 60,
+                display: "flex",
+                position: "absolute",
+                backgroundColor: "#fce0c1",
               }}
             >
-              Sepanjang Zaman!
+              Terbesar.
             </div>
           </div>
         </div>

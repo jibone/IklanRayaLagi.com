@@ -1,4 +1,4 @@
-import { ColorBox, LogoSmall } from "@/ui/branding";
+import { KotakKaler, LogoKecil } from "@/ui/branding";
 
 export default function Footer() {
   return (
@@ -8,10 +8,10 @@ export default function Footer() {
     >
       <div className="flex justify-between mx-auto max-w-screen-2xl">
         <div>
-          <ColorBox />
+          <KotakKaler />
         </div>
         <div>
-          <LogoSmall />
+          <LogoKecil />
         </div>
       </div>
     </footer>

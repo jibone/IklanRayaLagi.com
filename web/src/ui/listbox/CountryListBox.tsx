@@ -1,14 +1,14 @@
 "use client";
 
-import type { CountryList } from "@/db/schema/iklan";
+import type { SenaraiNegara } from "@/db/schema/iklan";
 import { Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Listbox, Transition } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/24/solid";
 
 type CountryListBoxProps = {
-  countryList: CountryList[];
-  countryCurrent: CountryList;
+  countryList: SenaraiNegara[];
+  countryCurrent: SenaraiNegara;
 };
 
 export default function CountryListBox({
@@ -26,7 +26,7 @@ export default function CountryListBox({
     others: "🌏 ",
   };
 
-  const handleOnChange = (e: CountryList) => {
+  const handleOnChange = (e: SenaraiNegara) => {
     setSelectedCountry(e);
     router.push(`/${e}`);
   };

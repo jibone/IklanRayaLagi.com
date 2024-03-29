@@ -14,7 +14,7 @@ describe("TahunPage", () => {
     const mockedProps = {
       tahun: "2024",
       senaraiTahun: ["2024", "2023", "2022"],
-      koleksiVid: [],
+      koleksiIklan: [],
     };
     render(<TahunPage {...mockedProps} />);
 

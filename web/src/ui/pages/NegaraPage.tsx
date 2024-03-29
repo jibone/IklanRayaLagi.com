@@ -1,17 +1,17 @@
-import type { Iklan, CountryList } from "@/db/schema/iklan";
-import { VideoCollection } from "@/ui/collection";
+import type { Iklan, SenaraiNegara } from "@/db/schema/iklan";
+import { KoleksiKadIklan } from "@/ui/koleksi";
 import CountryListBox from "../listbox/CountryListBox";
 
 type NegaraPageProps = {
-  negara: CountryList;
-  senaraiNegara: CountryList[];
-  koleksiIklanRaye: Iklan[];
+  negara: SenaraiNegara;
+  senaraiNegara: SenaraiNegara[];
+  koleksiIklan: Iklan[];
 };
 
 export default function NegaraPage({
   negara,
   senaraiNegara,
-  koleksiIklanRaye,
+  koleksiIklan,
 }: NegaraPageProps) {
   return (
     <div
@@ -29,7 +29,7 @@ export default function NegaraPage({
           </span>
         </div>
         <div className="mt-4 mb-6">
-          <VideoCollection videoCollection={koleksiIklanRaye} pill="year" />
+          <KoleksiKadIklan koleksiIklan={koleksiIklan} />
         </div>
       </div>
     </div>

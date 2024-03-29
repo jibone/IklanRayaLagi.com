@@ -20,7 +20,7 @@ describe("VideoPage", () => {
         organization: "The Jiboneus",
         slug: "this-is-the-slug",
       } as Iklan,
-      koleksiIklanRaye: [] as Iklan[],
+      koleksiIklan: [] as Iklan[],
     };
 
     render(<IklanRayePage {...mockedProps} />);

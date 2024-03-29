@@ -5,7 +5,6 @@ import {
   screen,
   fireEvent,
   waitFor,
-  act,
   cleanup,
 } from "@testing-library/react";
 import { OrgComboBox } from ".";
@@ -56,10 +55,6 @@ describe("OrgComboBox", () => {
   describe("when input component is on focus", () => {
     it("should trigger a router push", async () => {
       render(<OrgComboBox org={mockedProps.org} orgs={mockedProps.orgs} />);
-
-      const comboboxInputComponent = screen.getByTestId(
-        "combobox-input-component",
-      );
 
       waitFor(() => {
         const button = screen.getByRole("button");

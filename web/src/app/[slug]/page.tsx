@@ -1,4 +1,4 @@
-import type { CountryList } from "@/db/schema/iklan";
+import type { SenaraiNegara } from "@/db/schema/iklan";
 import { IklanModel } from "@/models";
 import { PageContainer } from "@/ui/layouts";
 import {
@@ -65,7 +65,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
         <TahunPage
           tahun={slug}
           senaraiTahun={allYear}
-          koleksiVid={allYearIklans}
+          koleksiIklan={allYearIklans}
         />
       </PageContainer>
     );
@@ -79,9 +79,9 @@ export default async function Entry({ params }: { params: { slug: string } }) {
     return (
       <PageContainer>
         <NegaraPage
-          negara={slug as CountryList}
-          senaraiNegara={allCountries as CountryList[]}
-          koleksiIklanRaye={allCountriesIklan}
+          negara={slug as SenaraiNegara}
+          senaraiNegara={allCountries as SenaraiNegara[]}
+          koleksiIklan={allCountriesIklan}
         />
       </PageContainer>
     );
@@ -111,7 +111,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
         <OrganisasiPage
           organisasi={selectedOrg}
           senaraiOrg={allOrgsWithSlug}
-          koleksiIklanRaye={allOrgIklan}
+          koleksiIklan={allOrgIklan}
         />
       </PageContainer>
     );
@@ -123,10 +123,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
     const videoCollection = await IklanModel.getRandom();
     return (
       <PageContainer>
-        <IklanRayePage
-          iklanRaye={iklanResult}
-          koleksiIklanRaye={videoCollection}
-        />
+        <IklanRayePage iklanRaye={iklanResult} koleksiIklan={videoCollection} />
       </PageContainer>
     );
   }
