@@ -66,7 +66,7 @@ Tolak schema local ke database terus.
 npm run db:drop
 ```
 
-Jangan. Bahaya. Men-rollback migration yang baru dibuat. Kalau tersilap migrate, baru guna. Telajak perahu boleh diundur, telajak _drop database_ buruk padahnya.
+Telajak perahu boleh diundur, telajak _drop database_ buruk padahnya. Tapi jangan risau, command ini hanya akan "men-rollback" migration yang baru dibuat.
 
 ```bash
 npm run db:up
