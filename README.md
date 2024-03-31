@@ -12,7 +12,11 @@ Iklan Raya Lagi dibangunkan dengan tech stack tipikal Gen-Z; [Next.js](https://n
 
 Semua code ada dalam folder 'web'. Penjelasan lebih mengenai code dan command-command dan penggunaannya ada dalam [README](web/README.md) folder tersebut.
 
-Sepermula projek ini, satu penetapan design dah dibuat, iaitu keputusan untuk tidak menyimpan apa-apa data penguna. IklanRayaLagi.com tidak mahu simpan data pengguna dan tidak memerlukan sebarang pendaftaran untuk diguna. Ini bukan Pengkalan Data Utama (PADU), ini Pengkalan Data Iklan Raya (PUDURAYA).
+Sepermula projek ini, beberapa penetapan design (design decision) dibuat.
+
+Pertama, keputusan untuk tidak menyimpan apa-apa data penguna. IklanRayaLagi.com tidak mahu simpan data pengguna dan tidak memerlukan sebarang pendaftaran untuk diguna. Ini bukan Pengkalan Data Utama (PADU), ini Pengkalan Data Iklan Raya (PUDURAYA).
+
+Kedua, adalah untuk tidak membangunkan sebarang bentuk CMS bagi pengurusan data. Tiada "admin panel". Pengurusan data dibuat secara terus dengan Drizzle Studio.
 
 ## Sembang sikit pasal lesen dan open-source
 
