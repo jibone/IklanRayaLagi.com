@@ -24,12 +24,8 @@ Ke-open-source-an projek ini lebih kepada hanya sekadar perkongsian. Sesiapa sah
 
 ## Pemberitahuan (disclaimer)
 
-Sebeberapa bahagian dari codebase ditulis dengan bantuan ChatGPT. Maka dengan itu, anggap sahaja lah kalau ada code yang nampak buruk itu dari ChatGPT, code yang nampak elok itu dari si penyelia [@jibone](https://twitter.com/jibone).
-
-## Cara berhubung
-
 Sebahagian dari codebase ditulis dengan bantuan ChatGPT ([AI Budaya Hidup Kita](https://x.com/jibone/status/1772508756535832679?s=20)). Maka dengan itu, anggap sahaja lah kalau ada code yang nampak buruk itu dari ChatGPT, code yang nampak elok itu dari [@jibone](https://twitter.com/jibone).
 
 ## Cara berhubung
 
-Si penyelia, pengelola, dan kurator website [iklanrayalagi.com](https://iklanrayalagi.com) iaitu saudara [@jibone](https://twitter.com/jibone) lebih gemar jika dihubungi terus atas talian di platform X(dulunya Twitter). Kalau anda follow, lagi cepat dia respon. Janji, tak tipu.
+Si penyelia, pengelola, dan kurator utama website [iklanrayalagi.com](https://iklanrayalagi.com) iaitu saudara [@jibone](https://twitter.com/jibone) lebih gemar jika dihubungi terus atas talian di platform X (dulunya Twitter). Kalau anda follow dia, lagi cepat dia respon. Janji, tak tipu.
