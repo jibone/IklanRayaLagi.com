@@ -110,8 +110,8 @@ export default function InformasiPage({
             memerlukan sebarang pendaftaran. Anda boleh menerokaan{" "}
             <strong>pengkalan data iklan Raya terbesar</strong> ini bermula di
             halaman <LinkWrap name="muka depan" url="/" />, dimana anda boleh
-            pilih untuk menapis mengikut tahun, negara, atau cari iklan dari
-            organisasi tertentu.
+            guna komponen carian berteknologi canggih. Komponen carian ini akan
+            memberikan temuan carian dengan kadar yang cepat.
           </p>
           <p className="mb-6 lg:text-xl">
             Jika anda tahu akan iklan yang tiada dalam rekod{" "}
