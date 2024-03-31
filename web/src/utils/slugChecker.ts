@@ -3,7 +3,7 @@ import { IklanModel } from "@/models";
 export class SlugChecker {
   static async isSlugTahun(slug: string): Promise<boolean> {
     // TODO: refactor, no need to call database for this can hard code all the yaers?
-    const allYear = await IklanModel.getAllYears();
+    const allYear = await IklanModel.getSemuaTahunan();
     if (allYear.includes(slug)) {
       return true;
     }
@@ -12,16 +12,16 @@ export class SlugChecker {
 
   static async isSlugNegara(slug: string): Promise<boolean> {
     // TODO: refactor, no need to call database for this, can hard code all the countries?
-    const allCountries = await IklanModel.getAllCountries();
-    if (allCountries.includes(slug)) {
+    const semuaNegara = await IklanModel.getSemuaNegara();
+    if (semuaNegara.includes(slug)) {
       return true;
     }
     return false;
   }
 
   static async isSlugOrg(slug: string): Promise<boolean> {
-    const allOrgs = await IklanModel.getAllOrg();
-    if (allOrgs.includes(slug)) {
+    const semuaOrganisasi = await IklanModel.getSemuaOrganisasi();
+    if (semuaOrganisasi.includes(slug)) {
       return true;
     }
     return false;

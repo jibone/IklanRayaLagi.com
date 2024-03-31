@@ -13,9 +13,11 @@ describe("Entry Page", () => {
 
   describe("when slug is year", () => {
     jest
-      .spyOn(IklanModel, "getAllYears")
+      .spyOn(IklanModel, "getSemuaTahunan")
       .mockImplementation(async () => ["2024", "2023", "2022"]);
-    jest.spyOn(IklanModel, "getAllForYear").mockImplementation(async () => []);
+    jest
+      .spyOn(IklanModel, "getSemuaIklanUntukTahun")
+      .mockImplementation(async () => []);
 
     const testParams = { params: { slug: "2023" } };
 
@@ -36,10 +38,10 @@ describe("Entry Page", () => {
 
   describe("when slug is country", () => {
     jest
-      .spyOn(IklanModel, "getAllCountries")
+      .spyOn(IklanModel, "getSemuaNegara")
       .mockImplementation(async () => ["malaysia", "indonesia", "singapore"]);
     jest
-      .spyOn(IklanModel, "getAllForCountries")
+      .spyOn(IklanModel, "getSemuaIklanNegara")
       .mockImplementation(async () => []);
 
     const testParams = { params: { slug: "malaysia" } };
@@ -61,18 +63,20 @@ describe("Entry Page", () => {
 
   describe("when slug is organization", () => {
     jest
-      .spyOn(IklanModel, "getAllOrg")
+      .spyOn(IklanModel, "getSemuaOrganisasi")
       .mockImplementation(async () => ["jiboneus"]);
-    jest.spyOn(IklanModel, "getAllForOrg").mockImplementation(async () => [
-      {
-        id: "xxx",
-        title: "The Jiboneus Labs",
-        year: "2024",
-        country: "malaysia",
-        organization: "jiboneus",
-        slug: "the_jiboneus_labs",
-      },
-    ]);
+    jest
+      .spyOn(IklanModel, "getSemuaIklanUntukOrganisasi")
+      .mockImplementation(async () => [
+        {
+          id: "xxx",
+          title: "The Jiboneus Labs",
+          year: "2024",
+          country: "malaysia",
+          organization: "jiboneus",
+          slug: "the_jiboneus_labs",
+        },
+      ]);
 
     const testParams = { params: { slug: "jiboneus" } };
 

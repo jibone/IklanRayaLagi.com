@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { Public_Sans } from "next/font/google";
 import "./globals.css";
 import { defaultSiteMeta } from "@/utils/siteMeta";
@@ -21,7 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="min-h-screen">
-      <body className={publicSans.className + "min-h-screen"}>{children}</body>
+      <body className={publicSans.className + "min-h-screen"}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

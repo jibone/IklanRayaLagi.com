@@ -53,7 +53,7 @@ export default async function BilikMedia() {
   const processedContent = await getPressReleaseProcessed(pressReleaseList[0]);
 
   return (
-    <PageContainer>
+    <PageContainer page="media">
       <BilikMediaPage content={processedContent} />
     </PageContainer>
   );

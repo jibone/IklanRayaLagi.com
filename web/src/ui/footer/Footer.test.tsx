@@ -7,15 +7,13 @@ import { Footer } from ".";
 // The test test that component is loaded properly
 describe("Footer", () => {
   it("should render the Footer component", () => {
-    render(<Footer />);
+    render(<Footer page="tester" />);
 
     // these components must be loaded
     const footer = screen.getByTestId("footer");
     const kotakKaler = screen.getByTestId("kotak-kaler-container");
-    const logoKecil = screen.getByTestId("logo-kecil-container");
 
     expect(footer).toBeInTheDocument();
     expect(kotakKaler).toBeInTheDocument();
-    expect(logoKecil).toBeInTheDocument();
   });
 });

@@ -1,4 +1,5 @@
-import KoleksiKadIklan from "./KoleksiKadIklan";
 import KadIklan from "./KadIklan";
+import KoleksiKadIklan from "./KoleksiKadIklan";
+import KoleksiKadIklanTahunan from "./KoleksiKadIklanTahunan";
 
-export { KoleksiKadIklan, KadIklan };
+export { KadIklan, KoleksiKadIklan, KoleksiKadIklanTahunan };

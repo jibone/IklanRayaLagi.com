@@ -1,6 +1,17 @@
-import { KotakKaler, LogoLebar } from "@/ui/branding";
+import Link from "next/link";
+import { LogoLebar } from "@/ui/branding";
 
-export default function Header() {
+export default function Header({ page }: { page: string }) {
+  const link = {
+    url: "/informasi",
+    label: "Informasi",
+  };
+
+  if (page === "informasi") {
+    link.url = "/";
+    link.label = "Muka Depan";
+  }
+
   return (
     <header
       data-testid="header"
@@ -11,7 +22,12 @@ export default function Header() {
           <LogoLebar />
         </div>
         <div>
-          <KotakKaler />
+          <Link
+            href={link.url}
+            className="py-2 px-4 bg-green-300 border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition duration-300 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
+          >
+            {link.label}
+          </Link>
         </div>
       </div>
     </header>

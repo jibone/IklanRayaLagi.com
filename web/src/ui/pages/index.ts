@@ -7,6 +7,7 @@ import OrganisasiPage from "./OrganisasiPage";
 import TakJumpaPage from "./TakJumpaPage";
 import InformasiPage from "./InformasiPage";
 import BilikMediaPage from "./BilikMediaPage";
+import MukaDepanPage from "./MukaDepanPage";
 
 export {
   AkanDatangPage,
@@ -18,4 +19,5 @@ export {
   TakJumpaPage,
   InformasiPage,
   BilikMediaPage,
+  MukaDepanPage,
 };

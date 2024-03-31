@@ -16,7 +16,13 @@ type Stats = {
 };
 
 export class IklanModel {
-  static async getAllYears(): Promise<string[]> {
+  static async getSemuaIklan(): Promise<Iklan[]> {
+    const result = await DB.execute(sql`SELECT * FROM iklan`);
+
+    return result.rows as Iklan[];
+  }
+
+  static async getSemuaTahunan(): Promise<string[]> {
     const result = await DB.selectDistinctOn([iklan.year], { year: iklan.year })
       .from(iklan)
       .orderBy(iklan.year);
@@ -26,7 +32,7 @@ export class IklanModel {
     });
   }
 
-  static async getAllForYear(year: string): Promise<Iklan[]> {
+  static async getSemuaIklanUntukTahun(year: string): Promise<Iklan[]> {
     const result = await DB.execute(
       sql`SELECT * FROM iklan WHERE year = ${year} ORDER BY random()`,
     );
@@ -34,7 +40,41 @@ export class IklanModel {
     return result.rows as Iklan[];
   }
 
-  static async getAllCountries(): Promise<string[]> {
+  static async getRandomDariTahun({
+    tahun,
+    kecualiTahun,
+    limit,
+  }: {
+    tahun?: string;
+    kecualiTahun?: string[];
+    limit: number;
+  }): Promise<Iklan[]> {
+    let result: Iklan[] = [];
+
+    if (tahun !== undefined) {
+      const dbResult = await DB.execute(
+        sql`SELECT * FROM iklan WHERE year = ${tahun} ORDER BY random() LIMIT ${limit}`,
+      );
+
+      if (dbResult.rowCount > 0) {
+        result = dbResult.rows as Iklan[];
+      }
+    }
+
+    if (kecualiTahun !== undefined && kecualiTahun.length > 0) {
+      const dbResult = await DB.execute(
+        sql`SELECT * FROM iklan WHERE year NOT IN ${kecualiTahun} ORDER BY random() LIMIT ${limit}`,
+      );
+
+      if (dbResult.rowCount > 0) {
+        result = dbResult.rows as Iklan[];
+      }
+    }
+
+    return result;
+  }
+
+  static async getSemuaNegara(): Promise<string[]> {
     const result = await DB.selectDistinctOn([iklan.country], {
       country: iklan.country,
     })
@@ -46,15 +86,18 @@ export class IklanModel {
     });
   }
 
-  static async getAllForCountries(country: string): Promise<Iklan[]> {
+  static async getSemuaIklanNegara(negara: string): Promise<Iklan[]> {
     const result = await DB.execute(
-      sql`SELECT * FROM iklan WHERE country = ${country} ORDER BY year DESC`,
+      sql`SELECT * FROM iklan WHERE country = ${negara} ORDER BY year DESC`,
     );
 
     return result.rows as Iklan[];
   }
 
-  static async getAllOrg(lowcase = true, slug = true): Promise<string[]> {
+  static async getSemuaOrganisasi(
+    lowcase = true,
+    slug = true,
+  ): Promise<string[]> {
     const result = await DB.selectDistinctOn([iklan.organization], {
       organization: iklan.organization,
     })
@@ -72,7 +115,7 @@ export class IklanModel {
     });
   }
 
-  static async getAllForOrg(org: string): Promise<Iklan[]> {
+  static async getSemuaIklanUntukOrganisasi(org: string): Promise<Iklan[]> {
     const result = await DB.execute(
       sql`SELECT * FROM iklan WHERE organization ILIKE ${org} ORDER BY year DESC`,
     );

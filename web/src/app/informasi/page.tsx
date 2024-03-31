@@ -6,7 +6,7 @@ export default async function Informasi() {
   const statsReport = await IklanModel.getStats();
 
   return (
-    <PageContainer>
+    <PageContainer page="informasi">
       <InformasiPage {...statsReport} />
     </PageContainer>
   );

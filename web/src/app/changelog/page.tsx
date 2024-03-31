@@ -49,7 +49,7 @@ export default async function Changelog() {
   }
 
   return (
-    <PageContainer>
+    <PageContainer page="changelog">
       <ChangelogPage contents={processedContent} />
     </PageContainer>
   );
