@@ -40,7 +40,7 @@ export default async function Home() {
   const semuaIklan = await getSemuaIklan();
 
   return (
-    <PageContainer>
+    <PageContainer page="muka_depan">
       <MukaDepanPage
         senaraiTahunan={senaraiTahunan}
         senaraiTahunLepas={senaraiTahunLepas}

@@ -61,7 +61,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
     const allYearIklans = await IklanModel.getAllForYear(slug);
 
     return (
-      <PageContainer>
+      <PageContainer page="iklan">
         <TahunPage
           tahun={slug}
           senaraiTahun={allYear}
@@ -77,7 +77,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
     const allCountriesIklan = await IklanModel.getAllForCountries(slug);
 
     return (
-      <PageContainer>
+      <PageContainer page="iklan">
         <NegaraPage
           negara={slug as SenaraiNegara}
           senaraiNegara={allCountries as SenaraiNegara[]}
@@ -107,7 +107,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
       name: orgName,
     };
     return (
-      <PageContainer>
+      <PageContainer page="iklan">
         <OrganisasiPage
           organisasi={selectedOrg}
           senaraiOrg={allOrgsWithSlug}
@@ -122,7 +122,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
   if (iklanResult !== undefined) {
     const videoCollection = await IklanModel.getRandom();
     return (
-      <PageContainer>
+      <PageContainer page="iklan">
         <IklanRayePage iklanRaye={iklanResult} koleksiIklan={videoCollection} />
       </PageContainer>
     );
