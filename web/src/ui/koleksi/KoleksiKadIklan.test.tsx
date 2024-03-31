@@ -23,12 +23,7 @@ describe("KoleksiKadIklan", () => {
       pill: "year" as "year" | "country",
     };
 
-    render(
-      <KoleksiKadIklan
-        koleksiIklan={mockedProps.koleksiIklan}
-        pill={mockedProps.pill}
-      />,
-    );
+    render(<KoleksiKadIklan koleksiIklan={mockedProps.koleksiIklan} />);
 
     const videoCollectionComponent = screen.getByTestId(
       "video-collection-container",

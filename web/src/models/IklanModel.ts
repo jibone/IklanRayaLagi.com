@@ -16,6 +16,12 @@ type Stats = {
 };
 
 export class IklanModel {
+  static async getSemuaIklan(): Promise<Iklan[]> {
+    const result = await DB.execute(sql`SELECT * FROM iklan`);
+
+    return result.rows as Iklan[];
+  }
+
   static async getAllYears(): Promise<string[]> {
     const result = await DB.selectDistinctOn([iklan.year], { year: iklan.year })
       .from(iklan)
@@ -32,6 +38,40 @@ export class IklanModel {
     );
 
     return result.rows as Iklan[];
+  }
+
+  static async getRandomDariTahun({
+    tahun,
+    kecualiTahun,
+    limit,
+  }: {
+    tahun?: string;
+    kecualiTahun?: string[];
+    limit: number;
+  }): Promise<Iklan[]> {
+    let result: Iklan[] = [];
+
+    if (tahun !== undefined) {
+      const dbResult = await DB.execute(
+        sql`SELECT * FROM iklan WHERE year = ${tahun} ORDER BY random() LIMIT ${limit}`,
+      );
+
+      if (dbResult.rowCount > 0) {
+        result = dbResult.rows as Iklan[];
+      }
+    }
+
+    if (kecualiTahun !== undefined && kecualiTahun.length > 0) {
+      const dbResult = await DB.execute(
+        sql`SELECT * FROM iklan WHERE year NOT IN ${kecualiTahun} ORDER BY random() LIMIT ${limit}`,
+      );
+
+      if (dbResult.rowCount > 0) {
+        result = dbResult.rows as Iklan[];
+      }
+    }
+
+    return result;
   }
 
   static async getAllCountries(): Promise<string[]> {

@@ -30,6 +30,16 @@ jest.mock("drizzle-orm/vercel-postgres", () => ({
 describe("IklanModel", () => {
   afterEach(cleanup);
 
+  describe(".getSemuaIklan", () => {
+    it("returns all Iklan", async () => {
+      mockedExcute.mockReturnValue({ rows: [mockedReturnedIklan] });
+
+      const result = await IklanModel.getSemuaIklan();
+
+      expect(result).toEqual([mockedReturnedIklan]);
+    });
+  });
+
   describe(".getAllYears", () => {
     it("returns a list of all the years", async () => {
       mockedOrderBy.mockReturnValue([
@@ -50,6 +60,40 @@ describe("IklanModel", () => {
       const result = await IklanModel.getAllForYear("2024");
 
       expect(result).toEqual([mockedReturnedIklan]);
+    });
+  });
+
+  describe(".getRandomDariTahun", () => {
+    describe("when tahun is not undefined", () => {
+      it("returns random dari tahun", async () => {
+        mockedExcute.mockReturnValue({
+          rowCount: 1,
+          rows: [mockedReturnedIklan],
+        });
+
+        const result = await IklanModel.getRandomDariTahun({
+          tahun: "2024",
+          limit: 6,
+        });
+
+        expect(result).toEqual([mockedReturnedIklan]);
+      });
+    });
+
+    describe("when kecualiTahun is not undefinede", () => {
+      it("returns random iklan except few years", async () => {
+        mockedExcute.mockReturnValue({
+          rowCount: 1,
+          rows: [mockedReturnedIklan],
+        });
+
+        const result = await IklanModel.getRandomDariTahun({
+          kecualiTahun: ["2024", "2023"],
+          limit: 8,
+        });
+
+        expect(result).toEqual([mockedReturnedIklan]);
+      });
     });
   });
 
