@@ -40,24 +40,24 @@ describe("IklanModel", () => {
     });
   });
 
-  describe(".getAllYears", () => {
+  describe(".getSemuaTahunan", () => {
     it("returns a list of all the years", async () => {
       mockedOrderBy.mockReturnValue([
         { id: "xxx", year: "2024" },
         { id: "xxx", year: "2023" },
       ]);
-      const result = await IklanModel.getAllYears();
+      const result = await IklanModel.getSemuaTahunan();
 
       expect(result).toEqual(["2024", "2023"]);
     });
   });
 
-  describe(".getAllForYear", () => {
+  describe(".getSemuaIklanUntukTahun", () => {
     it("returns all iklan for the year", async () => {
       mockedExcute.mockReturnValue({
         rows: [mockedReturnedIklan],
       });
-      const result = await IklanModel.getAllForYear("2024");
+      const result = await IklanModel.getSemuaIklanUntukTahun("2024");
 
       expect(result).toEqual([mockedReturnedIklan]);
     });
@@ -97,37 +97,37 @@ describe("IklanModel", () => {
     });
   });
 
-  describe(".getAllCountries", () => {
+  describe(".getSemuaNegara", () => {
     it("returns all the countries in lower case", async () => {
       mockedOrderBy.mockReturnValue([
         { id: "xxx", country: "malaysia" },
         { id: "xxx", country: "indonesia" },
       ]);
-      const result = await IklanModel.getAllCountries();
+      const result = await IklanModel.getSemuaNegara();
 
       expect(result).toEqual(["malaysia", "indonesia"]);
     });
   });
 
-  describe(".getAllForCountries", () => {
+  describe(".getSemuaUntukNegara", () => {
     it("returns all iklan for country", async () => {
       mockedExcute.mockReturnValue({
         rows: [mockedReturnedIklan],
       });
-      const result = await IklanModel.getAllForCountries("malaysia");
+      const result = await IklanModel.getSemuaIklanNegara("malaysia");
 
       expect(result).toEqual([mockedReturnedIklan]);
     });
   });
 
-  describe(".getAllOrg", () => {
+  describe(".getSemuaOrganisasi", () => {
     describe("when lowercase is true and slug is false", () => {
       it("returns list of org lowercase but no underscore", async () => {
         mockedOrderBy.mockReturnValue([
           { id: "xxx", organization: "Jiboneus" },
           { id: "xxx", organization: "Iklan Raya Lagi" },
         ]);
-        const result = await IklanModel.getAllOrg(true, false);
+        const result = await IklanModel.getSemuaOrganisasi(true, false);
 
         expect(result).toEqual(["jiboneus", "iklan raya lagi"]);
       });
@@ -139,7 +139,7 @@ describe("IklanModel", () => {
           { id: "xxx", organization: "Jiboneus" },
           { id: "xxx", organization: "Iklan Raya Lagi" },
         ]);
-        const result = await IklanModel.getAllOrg(true, true);
+        const result = await IklanModel.getSemuaOrganisasi(true, true);
 
         expect(result).toEqual(["jiboneus", "iklan_raya_lagi"]);
       });
@@ -151,17 +151,17 @@ describe("IklanModel", () => {
           { id: "xxx", organization: "Jiboneus" },
           { id: "xxx", organization: "Iklan Raya Lagi" },
         ]);
-        const result = await IklanModel.getAllOrg(false, false);
+        const result = await IklanModel.getSemuaOrganisasi(false, false);
 
         expect(result).toEqual(["Jiboneus", "Iklan Raya Lagi"]);
       });
     });
   });
 
-  describe(".getAllForOrg", () => {
+  describe(".getSemuaIklanUntukOrganisasi", () => {
     it("returns all iklan for org", async () => {
       mockedExcute.mockReturnValue({ rows: [mockedReturnedIklan] });
-      const result = await IklanModel.getAllForOrg("Jiboneus");
+      const result = await IklanModel.getSemuaIklanUntukOrganisasi("Jiboneus");
 
       expect(result).toEqual([mockedReturnedIklan]);
     });

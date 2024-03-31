@@ -8,7 +8,7 @@ import { IklanModel } from "@/models";
 describe("SlugChecker", () => {
   describe("isSlugTahun", () => {
     jest
-      .spyOn(IklanModel, "getAllYears")
+      .spyOn(IklanModel, "getSemuaTahunan")
       .mockImplementation(async () => ["2023", "2022", "2021"]);
 
     describe("when slug is tahun", () => {
@@ -32,7 +32,7 @@ describe("SlugChecker", () => {
 
   describe("isSlugNegara", () => {
     jest
-      .spyOn(IklanModel, "getAllCountries")
+      .spyOn(IklanModel, "getSemuaNegara")
       .mockImplementation(async () => ["malaysia", "singapore", "indonesia"]);
 
     describe("when slug is negara", () => {
@@ -52,7 +52,7 @@ describe("SlugChecker", () => {
 
   describe("isSlugOrg", () => {
     jest
-      .spyOn(IklanModel, "getAllOrg")
+      .spyOn(IklanModel, "getSemuaOrganisasi")
       .mockImplementation(async () => ["org1", "org2", "org3"]);
 
     describe("when slug is org", () => {

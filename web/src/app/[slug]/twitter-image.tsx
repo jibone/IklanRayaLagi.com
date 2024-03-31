@@ -33,7 +33,9 @@ export default async function OpenGraphImage({
 
   const isOrg = await SlugChecker.isSlugOrg(slug);
   if (isOrg) {
-    const orgIklan = await IklanModel.getAllForOrg(slug.replace("_", " "));
+    const orgIklan = await IklanModel.getSemuaIklanUntukOrganisasi(
+      slug.replace("_", " "),
+    );
     return OGOrgPage({
       orgName: orgIklan[0].organization,
       vidId: orgIklan[0].id,

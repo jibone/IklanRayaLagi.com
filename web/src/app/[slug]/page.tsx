@@ -37,11 +37,13 @@ export async function generateMetadata({
 
   const isSlugOrg = await SlugChecker.isSlugOrg(slug);
   if (isSlugOrg) {
-    const org = await IklanModel.getAllForOrg(slug.replace("_", " "));
-    const orgName = org[0].organization;
+    const organisasi = await IklanModel.getSemuaIklanUntukOrganisasi(
+      slug.replace("_", " "),
+    );
+    const namaOrganisasi = organisasi[0].organization;
     return generateSiteMetadata({
-      title: `Senarai iklan Raya daripada ${orgName}`,
-      description: `Tonton iklan-iklan Raya yang menarik daripada ${orgName} di IklanRayaLago, laman web yang punyai koleksi iklan Raya terbesar.`,
+      title: `Senarai iklan Raya daripada ${namaOrganisasi}`,
+      description: `Tonton iklan-iklan Raya yang menarik daripada ${namaOrganisasi} di IklanRayaLago, laman web yang punyai koleksi iklan Raya terbesar.`,
     });
   }
 
@@ -56,62 +58,66 @@ export default async function Entry({ params }: { params: { slug: string } }) {
   const { slug } = params;
 
   // list year ?
-  const allYear = await IklanModel.getAllYears();
-  if (allYear.includes(slug)) {
-    const allYearIklans = await IklanModel.getAllForYear(slug);
+  const senaraiSemuaTahun = await IklanModel.getSemuaTahunan();
+  if (senaraiSemuaTahun.includes(slug)) {
+    const senaraiSemuaIklan = await IklanModel.getSemuaIklanUntukTahun(slug);
 
     return (
       <PageContainer page="iklan">
         <TahunPage
           tahun={slug}
-          senaraiTahun={allYear}
-          koleksiIklan={allYearIklans}
+          senaraiTahun={senaraiSemuaTahun}
+          koleksiIklan={senaraiSemuaIklan}
         />
       </PageContainer>
     );
   }
 
   // list country ?
-  const allCountries = await IklanModel.getAllCountries();
-  if (allCountries.includes(slug)) {
-    const allCountriesIklan = await IklanModel.getAllForCountries(slug);
+  const semuaNegara = await IklanModel.getSemuaNegara();
+  if (semuaNegara.includes(slug)) {
+    const semuaIklanNegara = await IklanModel.getSemuaIklanNegara(slug);
 
     return (
       <PageContainer page="iklan">
         <NegaraPage
           negara={slug as SenaraiNegara}
-          senaraiNegara={allCountries as SenaraiNegara[]}
-          koleksiIklan={allCountriesIklan}
+          senaraiNegara={semuaNegara as SenaraiNegara[]}
+          koleksiIklan={semuaIklanNegara}
         />
       </PageContainer>
     );
   }
 
   // list org ?
-  const allOrgs = await IklanModel.getAllOrg();
-  if (allOrgs.includes(slug)) {
-    const org = slug.replaceAll("_", " ");
-    const allOrgsName = await IklanModel.getAllOrg(false, false);
+  const semuaOrganisasi = await IklanModel.getSemuaOrganisasi();
+  if (semuaOrganisasi.includes(slug)) {
+    const organisasi = slug.replaceAll("_", " ");
+    const semuaNamaOrganisasi = await IklanModel.getSemuaOrganisasi(
+      false,
+      false,
+    );
 
-    const allOrgsWithSlug = allOrgsName.map((o) => {
+    const semuaOrganisasiBersamaSlug = semuaNamaOrganisasi.map((o) => {
       return {
         slug: `${o.toLowerCase().replaceAll(" ", "_")}`,
         name: `${o}`,
       };
     });
 
-    const allOrgIklan = await IklanModel.getAllForOrg(org);
-    const orgName = allOrgIklan[0].organization;
+    const semuaIklanOrganisasi =
+      await IklanModel.getSemuaIklanUntukOrganisasi(organisasi);
+    const namaOrganisasi = semuaIklanOrganisasi[0].organization;
     const selectedOrg = {
-      slug: orgName.toLowerCase().replaceAll(" ", "_"),
-      name: orgName,
+      slug: namaOrganisasi.toLowerCase().replaceAll(" ", "_"),
+      name: namaOrganisasi,
     };
     return (
       <PageContainer page="iklan">
         <OrganisasiPage
           organisasi={selectedOrg}
-          senaraiOrg={allOrgsWithSlug}
-          koleksiIklan={allOrgIklan}
+          senaraiOrg={semuaOrganisasiBersamaSlug}
+          koleksiIklan={semuaIklanOrganisasi}
         />
       </PageContainer>
     );

@@ -22,7 +22,7 @@ export class IklanModel {
     return result.rows as Iklan[];
   }
 
-  static async getAllYears(): Promise<string[]> {
+  static async getSemuaTahunan(): Promise<string[]> {
     const result = await DB.selectDistinctOn([iklan.year], { year: iklan.year })
       .from(iklan)
       .orderBy(iklan.year);
@@ -32,7 +32,7 @@ export class IklanModel {
     });
   }
 
-  static async getAllForYear(year: string): Promise<Iklan[]> {
+  static async getSemuaIklanUntukTahun(year: string): Promise<Iklan[]> {
     const result = await DB.execute(
       sql`SELECT * FROM iklan WHERE year = ${year} ORDER BY random()`,
     );
@@ -74,7 +74,7 @@ export class IklanModel {
     return result;
   }
 
-  static async getAllCountries(): Promise<string[]> {
+  static async getSemuaNegara(): Promise<string[]> {
     const result = await DB.selectDistinctOn([iklan.country], {
       country: iklan.country,
     })
@@ -86,15 +86,18 @@ export class IklanModel {
     });
   }
 
-  static async getAllForCountries(country: string): Promise<Iklan[]> {
+  static async getSemuaIklanNegara(negara: string): Promise<Iklan[]> {
     const result = await DB.execute(
-      sql`SELECT * FROM iklan WHERE country = ${country} ORDER BY year DESC`,
+      sql`SELECT * FROM iklan WHERE country = ${negara} ORDER BY year DESC`,
     );
 
     return result.rows as Iklan[];
   }
 
-  static async getAllOrg(lowcase = true, slug = true): Promise<string[]> {
+  static async getSemuaOrganisasi(
+    lowcase = true,
+    slug = true,
+  ): Promise<string[]> {
     const result = await DB.selectDistinctOn([iklan.organization], {
       organization: iklan.organization,
     })
@@ -112,7 +115,7 @@ export class IklanModel {
     });
   }
 
-  static async getAllForOrg(org: string): Promise<Iklan[]> {
+  static async getSemuaIklanUntukOrganisasi(org: string): Promise<Iklan[]> {
     const result = await DB.execute(
       sql`SELECT * FROM iklan WHERE organization ILIKE ${org} ORDER BY year DESC`,
     );
