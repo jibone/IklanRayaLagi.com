@@ -3,7 +3,8 @@ import { Metadata } from "next";
 export const defaultSiteMeta = {
   title: "Iklan Raya Lagi (IRL)",
   shortName: "Iklan Raya Lagi",
-  description: "Koleksi iklan raya sepanjang zaman",
+  description:
+    "Pengkalan data iklan Raya terbesar, menempatkan koleksi iklan raya sepanjang zaman. Dari yang sedih, sampai ke yang lucu, dan juga ada yang cringe.",
   siteUrl: "https://IklanRayaLagi.com",
 };
 
