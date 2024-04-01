@@ -55,7 +55,7 @@ export default function CountryListBox({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Listbox.Options className="absolute mt-2 w-fit overflow-auto rounded-2xl bg-white text-base border-black border-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] focus:outline-none">
+          <Listbox.Options className="absolute z-50 mt-2 w-fit overflow-auto rounded-2xl bg-white text-base border-black border-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] focus:outline-none">
             {countryList.map((country) => {
               if (country === countryCurrent) return;
 
