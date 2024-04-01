@@ -1,5 +1,6 @@
 import type { Iklan } from "@/db/schema/iklan";
 import Link from "next/link";
+import Image from "next/image";
 import { Player } from "@/ui/player";
 import { KoleksiKadIklan } from "@/ui/koleksi";
 
@@ -52,10 +53,22 @@ export default function IklanRayePage({
                 >
                   {`${flagEmoji[iklanRaye.country]} ${iklanRaye.country.replace(/\b\w/g, (char) => char.toUpperCase())}`}
                 </Link>
+                <Link
+                  target="_blank"
+                  href={`https://youtube.com/watch?v=${iklanRaye.id}`}
+                  className="w-fit h-fit text-base px-3 py-1 bg-white border-2 border-black rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                >
+                  <Image
+                    src="/imgs/youtube-color.svg"
+                    alt="Youtube logo"
+                    width={24}
+                    height={24}
+                  />
+                </Link>
               </div>
               <Link
                 href={`/${iklanRaye.organization.toLowerCase().replaceAll(" ", "_")}`}
-                className="w-fit mb-2 text-base md:text-xl px-3 py-2 bg-white border-2 border-black rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
+                className="w-fit mb-2 text-base md:text-xl px-3 py-1 bg-white border-2 border-black rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]"
               >
                 {iklanRaye.organization}
               </Link>
