@@ -3,6 +3,8 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { KoleksiKadIklanTahunan } from ".";
 
+jest.mock("react-superellipse", () => "react-superellipse");
+
 describe("KoleksiKadIklan", () => {
   it("should render the KoleksiKadIklanTahunan component", () => {
     const mockedIklan = {

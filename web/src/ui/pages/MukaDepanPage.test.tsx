@@ -3,6 +3,8 @@ import "@testing-library/jest-dom";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { MukaDepanPage } from ".";
 
+jest.mock("react-superellipse", () => "react-superellipse");
+
 describe("MukaDepanPage", () => {
   it("should render the muka depan component", () => {
     const mockedIklan = {

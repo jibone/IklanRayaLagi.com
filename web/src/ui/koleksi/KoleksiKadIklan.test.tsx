@@ -7,6 +7,8 @@ import { KoleksiKadIklan } from ".";
 // Write a jest jsdom test for the imported koleksiIklan component.
 // The test test that component is loaded properly
 
+jest.mock("react-superellipse", () => "react-superellipse");
+
 describe("KoleksiKadIklan", () => {
   it("should render the KoleksiKadIklan component", () => {
     const mockedProps = {
