@@ -17,7 +17,7 @@ export default function KoleksiKadIklanTahunan({
   return (
     <div data-testid="koleksi-kad-iklan-tahunan-container" className="mt-14">
       <div className="font-bold text-xl md:text-2xl lg:text-4xl">{label}</div>
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {koleksiIklan.map((iklan) => (
           <KadIklan key={iklan.id} iklan={iklan} />
         ))}
