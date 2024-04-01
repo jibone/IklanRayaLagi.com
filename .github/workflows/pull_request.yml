@@ -1,0 +1,25 @@
+name: Test pull request
+
+on:
+  pull_request:
+    branches: [master, main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./web
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "v20.7.0"
+      - name: Install dependencies
+        run: npm install
+      - name: Run test
+        run: npm run test

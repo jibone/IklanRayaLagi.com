@@ -4,6 +4,7 @@ import { IklanModel } from "@/models";
 import Entry, { generateMetadata } from "./page";
 
 jest.mock("react-player", () => "react-player");
+jest.mock("react-superellipse", () => "react-superellipse");
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));
