@@ -30,7 +30,7 @@ type SiteMetadataProps = {
 // generate site metadata.
 export function generateSiteMetadata({
   title,
-  description,
+  description = defaultSiteMeta.description,
   image,
   ...rest
 }: SiteMetadataProps): Metadata {
