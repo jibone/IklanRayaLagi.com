@@ -7,7 +7,7 @@ export default function InformasiStatsLoading() {
         </div>
         <div className="mt-4">
           <p className="mb-4 text-lg lg:text-xl text-center">
-            Seding memuat-turun data...
+            Data sedang dimuat-turunkan ...
           </p>
         </div>
       </div>
