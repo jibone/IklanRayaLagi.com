@@ -33,7 +33,7 @@ describe("Utils", () => {
   });
 
   describe("generateSiteMetadata()", () => {
-    it("returns the formated site metadata", () => {
+    it("returns the formated site metadata with description", () => {
       const mockSiteMeta = {
         title: "Tajuk iklan raya",
         description: "Ini diskripsi iklan raya.",
@@ -54,6 +54,33 @@ describe("Utils", () => {
         twitter: {
           title: titleTemplate,
           description: mockSiteMeta.description,
+          card: "summary_large_image",
+        },
+      };
+
+      expect(generatedSiteMetadata).toEqual(expectedResult);
+    });
+
+    it("returns the formated site metadata without description", () => {
+      const mockSiteMeta = {
+        title: "Tajuk iklan raya",
+      };
+      const generatedSiteMetadata = generateSiteMetadata(mockSiteMeta);
+
+      const titleTemplate = `${defaultSiteMeta.title} > ${mockSiteMeta.title}`;
+      const expectedResult: Metadata = {
+        title: mockSiteMeta.title,
+        description: defaultSiteMeta.description,
+        openGraph: {
+          title: titleTemplate,
+          description: defaultSiteMeta.description,
+          url: "./",
+          siteName: defaultSiteMeta.title,
+          type: "website",
+        },
+        twitter: {
+          title: titleTemplate,
+          description: defaultSiteMeta.description,
           card: "summary_large_image",
         },
       };
