@@ -6,7 +6,7 @@ import { iklan } from "@/db/schema/iklan";
 
 const DB = drizzle(vercelSql);
 
-type Stats = {
+export type Stats = {
   totalIklan: string;
   totalIklanMalaysia: string;
   totalIklanIndonesia: string;

@@ -5,7 +5,6 @@ import TahunPage from "./TahunPage";
 import NegaraPage from "./NegaraPage";
 import OrganisasiPage from "./OrganisasiPage";
 import TakJumpaPage from "./TakJumpaPage";
-import InformasiPage from "./InformasiPage";
 import BilikMediaPage from "./BilikMediaPage";
 import MukaDepanPage from "./MukaDepanPage";
 
@@ -17,7 +16,6 @@ export {
   NegaraPage,
   OrganisasiPage,
   TakJumpaPage,
-  InformasiPage,
   BilikMediaPage,
   MukaDepanPage,
 };
