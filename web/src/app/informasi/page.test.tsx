@@ -14,7 +14,7 @@ describe("Informasi", () => {
   }));
 
   it("renders the Informasi page", async () => {
-    render(await Informasi());
+    render(Informasi());
 
     const informasiPageComponent = screen.getByTestId(
       "informasi-page-container",
