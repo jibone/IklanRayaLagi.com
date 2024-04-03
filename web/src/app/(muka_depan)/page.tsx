@@ -20,16 +20,16 @@ export default async function MukaDepan() {
           </li>
         </ul>
       </div>
-      <div className="text-center mt-8">
+      <div className="text-center mt-8 over">
         <div className="text-2xl font-semibold mb-2">
           Senarai Iklan Dari Tahun
         </div>
-        <ul className="flex">
+        <ul className="flex flex-wrap justify-center items-center">
           {semuaTahun
             .sort()
             .reverse()
             .map((tahun) => (
-              <li key={tahun} className="mx-2">
+              <li key={tahun} className="mx-2 mb-6">
                 <PautanPill href={`/${tahun}`}>{tahun}</PautanPill>
               </li>
             ))}
