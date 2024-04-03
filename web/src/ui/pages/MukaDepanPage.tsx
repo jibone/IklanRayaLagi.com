@@ -3,17 +3,9 @@
 import type { Iklan } from "@/db/schema/iklan";
 import { useState } from "react";
 import Fuse from "fuse.js";
-import { KoleksiKadIklanTahunan, KoleksiKadIklan } from "@/ui/koleksi";
+import { KoleksiKadIklan } from "@/ui/koleksi";
 
-export default function MukaDepanPage({
-  senaraiTahunan,
-  senaraiTahunLepas,
-  semuaIklan,
-}: {
-  senaraiTahunan: Iklan[][];
-  senaraiTahunLepas: Iklan[];
-  semuaIklan: Iklan[];
-}) {
+export default function MukaDepanPage({ semuaIklan }: { semuaIklan: Iklan[] }) {
   const [showResult, setShowResult] = useState(false);
   const [resultCarian, setResultCarian] = useState<Iklan[]>([]);
 
@@ -93,50 +85,6 @@ export default function MukaDepanPage({
               </div>
             </div>
           )}
-        </div>
-
-        <div className={`${showResult ? "hidden" : "visible"}`}>
-          <KoleksiKadIklanTahunan
-            label="Iklan tahun ini (2024)"
-            labelPautan="Senarai iklan tahun ni"
-            pautan="2024"
-            koleksiIklan={senaraiTahunan[0]}
-          />
-
-          <KoleksiKadIklanTahunan
-            label="Iklan tahun lepas (2023)"
-            labelPautan="Senarai iklan tahun lepas"
-            pautan="2023"
-            koleksiIklan={senaraiTahunan[1]}
-          />
-
-          <KoleksiKadIklanTahunan
-            label="Iklan tahun (2022)"
-            labelPautan="Senarai iklan tahun 2022"
-            pautan="2022"
-            koleksiIklan={senaraiTahunan[2]}
-          />
-
-          <KoleksiKadIklanTahunan
-            label="Iklan tahun (2021)"
-            labelPautan="tengok iklan tahun 2021"
-            pautan="2021"
-            koleksiIklan={senaraiTahunan[3]}
-          />
-
-          <KoleksiKadIklanTahunan
-            label="Iklan tahun (2020)"
-            labelPautan="Lagi iklan tahun 2020"
-            pautan="2020"
-            koleksiIklan={senaraiTahunan[4]}
-          />
-
-          <KoleksiKadIklanTahunan
-            label="Iklan dari tahun 2019 dan sebelumnya"
-            labelPautan="Cari iklan lain"
-            pautan="/"
-            koleksiIklan={senaraiTahunLepas}
-          />
         </div>
       </div>
     </div>
