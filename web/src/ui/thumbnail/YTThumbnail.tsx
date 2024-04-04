@@ -1,4 +1,6 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
+
+// import Image from "next/image";
 
 export type YTThumbnailProps = {
   vidId: string;
@@ -8,5 +10,5 @@ export type YTThumbnailProps = {
 export default function YTThumbnail({ vidId, altText }: YTThumbnailProps) {
   const imgSrc = `https://img.youtube.com/vi/${vidId}/0.jpg`;
 
-  return <Image src={imgSrc} width={480} height={360} alt={altText} />;
+  return <img src={imgSrc} width={480} height={360} alt={altText} />;
 }

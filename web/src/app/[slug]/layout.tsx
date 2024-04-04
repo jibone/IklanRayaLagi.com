@@ -49,9 +49,13 @@ export async function generateMetadata({
 
 export default async function EntryLoading({
   children,
+  iklanPlayer,
+  iklanLain,
   params,
 }: {
   children: React.ReactNode;
+  iklanPlayer: React.ReactNode;
+  iklanLain: React.ReactNode;
   params: { slug: string };
 }) {
   const { slug } = params;
@@ -71,5 +75,11 @@ export default async function EntryLoading({
     return <PageContainer page="iklan_org">{children}</PageContainer>;
   }
 
-  return <PageContainer page="iklan">{children}</PageContainer>;
+  return (
+    <PageContainer page="iklan">
+      {iklanPlayer}
+      {iklanLain}
+      {children}
+    </PageContainer>
+  );
 }
