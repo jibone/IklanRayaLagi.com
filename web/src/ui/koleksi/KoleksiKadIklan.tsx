@@ -11,7 +11,7 @@ export default function KoleksiKadIklan({
   return (
     <div
       data-testid="video-collection-container"
-      className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+      className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
     >
       {koleksiIklan.map((iklan: Iklan) => {
         return <KadIklan key={iklan.id} iklan={iklan} />;
