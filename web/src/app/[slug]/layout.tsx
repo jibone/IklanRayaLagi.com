@@ -51,28 +51,49 @@ export default async function EntryLoading({
   children,
   iklanPlayer,
   iklanLain,
+  iklanTahunan,
+  iklanNegara,
+  iklanOrg,
   params,
 }: {
   children: React.ReactNode;
   iklanPlayer: React.ReactNode;
   iklanLain: React.ReactNode;
+  iklanTahunan: React.ReactNode;
+  iklanNegara: React.ReactNode;
+  iklanOrg: React.ReactNode;
   params: { slug: string };
 }) {
   const { slug } = params;
 
   const isTahun = await SlugChecker.isSlugTahun(slug);
   if (isTahun) {
-    return <PageContainer page="iklan_tahunan">{children}</PageContainer>;
+    return (
+      <PageContainer page="iklan_tahunan">
+        {iklanTahunan}
+        {children}
+      </PageContainer>
+    );
   }
 
   const isNegara = await SlugChecker.isSlugNegara(slug);
   if (isNegara) {
-    return <PageContainer page="iklan_negara">{children}</PageContainer>;
+    return (
+      <PageContainer page="iklan_negara">
+        {iklanNegara}
+        {children}
+      </PageContainer>
+    );
   }
 
   const isSlugOrg = await SlugChecker.isSlugOrg(slug);
   if (isSlugOrg) {
-    return <PageContainer page="iklan_org">{children}</PageContainer>;
+    return (
+      <PageContainer page="iklan_org">
+        {iklanOrg}
+        {children}
+      </PageContainer>
+    );
   }
 
   return (
