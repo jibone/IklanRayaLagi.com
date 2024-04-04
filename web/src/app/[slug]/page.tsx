@@ -1,11 +1,7 @@
 import type { SenaraiNegara } from "@/db/schema/iklan";
 import { IklanModel } from "@/models";
-import {
-  IklanRayePage,
-  TahunPage,
-  NegaraPage,
-  OrganisasiPage,
-} from "@/ui/pages";
+import { TahunPage, NegaraPage, OrganisasiPage } from "@/ui/pages";
+import { KoleksiHalaman } from "@/ui/koleksi";
 import { notFound } from "next/navigation";
 
 export default async function Entry({ params }: { params: { slug: string } }) {
@@ -74,10 +70,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
   // show the iklan from slug
   const iklanResult = await IklanModel.getIklanBySlug(slug);
   if (iklanResult !== undefined) {
-    const videoCollection = await IklanModel.getRandom();
-    return (
-      <IklanRayePage iklanRaye={iklanResult} koleksiIklan={videoCollection} />
-    );
+    return <KoleksiHalaman semuaTahun={senaraiSemuaTahun || []} />;
   }
 
   return notFound();

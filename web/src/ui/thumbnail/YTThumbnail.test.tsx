@@ -13,7 +13,7 @@ describe("YTThumbnail", () => {
     render(<YTThumbnail vidId={vidId} altText={altText} />);
 
     const image = screen.getByRole("img");
-    const expectedSrc = `/_next/image?url=https%3A%2F%2Fimg.youtube.com%2Fvi%2F${vidId}%2F0.jpg&w=1080&q=75`;
+    const expectedSrc = `https://img.youtube.com/vi/${vidId}/0.jpg`;
 
     expect(image).toHaveAttribute("src", expectedSrc);
     expect(image).toHaveAttribute("alt", altText);
