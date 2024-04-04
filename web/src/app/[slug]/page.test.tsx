@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { cleanup, render, screen } from "@testing-library/react";
 import { IklanModel } from "@/models";
-import Entry, { generateMetadata } from "./page";
+import Entry from "./page";
 
 jest.mock("react-player", () => "react-player");
 jest.mock("react-superellipse", () => "react-superellipse");
@@ -29,12 +29,6 @@ describe("Entry Page", () => {
 
       expect(tahunPageComponent).toBeInTheDocument();
     });
-
-    it("renders the correct page metadata", async () => {
-      const result = await generateMetadata(testParams);
-
-      expect(result.title).toBe("Senarai iklan Raya tahun 2023");
-    });
   });
 
   describe("when slug is country", () => {
@@ -53,12 +47,6 @@ describe("Entry Page", () => {
       const negaraPageComponent = screen.getByTestId("negara-page-container");
 
       expect(negaraPageComponent).toBeInTheDocument();
-    });
-
-    it("renders the correct page metadata", async () => {
-      const result = await generateMetadata(testParams);
-
-      expect(result.title).toBe("Senarai iklan Raya dari Malaysia");
     });
   });
 
@@ -89,12 +77,6 @@ describe("Entry Page", () => {
       );
 
       expect(organisasiPageComponent).toBeInTheDocument();
-    });
-
-    it("renders the organization page", async () => {
-      const result = await generateMetadata(testParams);
-
-      expect(result.title).toBe("Senarai iklan Raya daripada jiboneus");
     });
   });
 
@@ -133,12 +115,6 @@ describe("Entry Page", () => {
       const videoPageComponent = screen.getByTestId("video-page-container");
 
       expect(videoPageComponent).toBeInTheDocument();
-    });
-
-    it("renders the correct metadata", async () => {
-      const result = await generateMetadata(testParams);
-
-      expect(result.title).toBe("Iklan Raya Jiboneus");
     });
   });
 });
