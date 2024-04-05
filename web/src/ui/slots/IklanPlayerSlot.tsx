@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Iklan } from "@/db/schema/iklan";
 import { Player } from "@/ui/player";
 import { PautanPill } from "@/ui/pautan";
+import { KongsiModal } from "@/ui/kongsi";
 
 export default function IklanPlayerSlots({ iklanRaya }: { iklanRaya: Iklan }) {
   const iklanSrc = `https://www.youtube.com/watch?v=${iklanRaya.id}`;
@@ -33,6 +34,13 @@ export default function IklanPlayerSlots({ iklanRaya }: { iklanRaya: Iklan }) {
               <PautanPill href={`/${iklanRaya.country.toLowerCase()}`}>
                 {`${flagEmoji[iklanRaya.country]} ${iklanRaya.country.replace(/\b\w/g, (char) => char.toUpperCase())}`}
               </PautanPill>
+              <PautanPill
+                href={`/${iklanRaya.organization.toLowerCase().replaceAll(" ", "_")}`}
+              >
+                {iklanRaya.organization}
+              </PautanPill>
+            </div>
+            <div className="flex flex-wrap gap-3 mb-2 mt-4">
               <PautanPill href={`${iklanSrc}`} targetBlank>
                 <Image
                   src="/imgs/youtube-color.svg"
@@ -41,11 +49,7 @@ export default function IklanPlayerSlots({ iklanRaya }: { iklanRaya: Iklan }) {
                   height={24}
                 />
               </PautanPill>
-              <PautanPill
-                href={`/${iklanRaya.organization.toLowerCase().replaceAll(" ", "_")}`}
-              >
-                {iklanRaya.organization}
-              </PautanPill>
+              <KongsiModal iklan={iklanRaya} />
             </div>
           </div>
         </div>
