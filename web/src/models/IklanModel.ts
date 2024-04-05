@@ -179,4 +179,16 @@ export class IklanModel {
       tahunTerlatest,
     };
   }
+
+  static async getIklanId(id: string): Promise<{ slug: string } | undefined> {
+    const result = (await DB.select({ slug: iklan.slug })
+      .from(iklan)
+      .where(eq(iklan.id, id))) as { slug: string }[];
+
+    if (result.length === 0) {
+      return undefined;
+    }
+
+    return result[0];
+  }
 }
