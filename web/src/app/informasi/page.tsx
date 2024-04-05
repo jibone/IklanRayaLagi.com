@@ -33,7 +33,7 @@ export default function InformasiPage() {
             </p>
             <p className="mb-4 text-lg lg:text-2xl">
               Iklan Raya semua bebas ditonton dengan sepuasnya hati tanpa
-              memerlukan sebarang pendaftaran. Anda boleh menerokaan{" "}
+              memerlukan sebarang pendaftaran. Anda boleh meneroka{" "}
               <strong>pengkalan data iklan Raya terbesar</strong> ini bermula di
               halaman <Pautan href="/">Muka Depan</Pautan>, dimana anda boleh
               guna komponen carian berteknologi canggih.
