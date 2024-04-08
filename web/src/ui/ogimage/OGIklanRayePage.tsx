@@ -40,7 +40,7 @@ export default async function OGIklanRayePage({
           <div
             style={{
               width: 520,
-              fontSize: 60,
+              fontSize: 50,
               display: "flex",
               fontWeight: 900,
               position: "absolute",

@@ -44,7 +44,7 @@ export default async function OGTahunPage({ tahun }: { tahun: string }) {
 
           <div
             style={{
-              top: "90px",
+              top: "80px",
               fontSize: 80,
               display: "flex",
               color: "#aa9cf7",
@@ -70,7 +70,7 @@ export default async function OGTahunPage({ tahun }: { tahun: string }) {
               style={{
                 fontSize: 90,
                 color: "#4c8592",
-                marginLeft: "10px",
+                marginLeft: "30px",
                 backgroundColor: "#fce0c1",
               }}
             >

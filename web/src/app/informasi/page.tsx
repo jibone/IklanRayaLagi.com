@@ -1,5 +1,14 @@
 import Image from "next/image";
 import { Pautan } from "@/ui/pautan";
+import { generateSiteMetadata } from "@/utils/siteMeta";
+
+export async function generateMetadata() {
+  return generateSiteMetadata({
+    title: `Informasi Laman Iklan Raya Lagi (IRL)`,
+    description:
+      "Informasi dan statistik terkini pengkalan iklan Raya terbesar.",
+  });
+}
 
 export default function InformasiPage() {
   return (

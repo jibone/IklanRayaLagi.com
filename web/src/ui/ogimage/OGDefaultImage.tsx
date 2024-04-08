@@ -155,7 +155,7 @@ export default async function OGDefaultImage() {
             <div
               style={{
                 width: 500,
-                top: "75px",
+                top: "85px",
                 height: 150,
                 fontSize: 60,
                 display: "flex",
@@ -167,11 +167,12 @@ export default async function OGDefaultImage() {
             <div
               style={{
                 left: "0px",
-                top: "215px",
+                top: "240px",
                 fontSize: 60,
                 display: "flex",
                 position: "absolute",
                 backgroundColor: "#fce0c1",
+                textDecoration: "underline",
               }}
             >
               Terbesar.

@@ -34,6 +34,8 @@ export function generateSiteMetadata({
   image,
   ...rest
 }: SiteMetadataProps): Metadata {
+  const defaultImage = `${getBaseUrl()}/og?type=default`;
+  const ogImage = image === undefined ? defaultImage : image;
   return {
     title,
     description,
@@ -43,11 +45,13 @@ export function generateSiteMetadata({
       url: "./",
       siteName: defaultSiteMeta.title,
       type: "website",
+      images: [ogImage],
     },
     twitter: {
       title: `${defaultSiteMeta.title} > ${title}`,
       description: description || defaultSiteMeta.description,
       card: "summary_large_image",
+      images: [ogImage],
     },
     ...rest,
   };
