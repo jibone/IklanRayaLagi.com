@@ -50,11 +50,13 @@ describe("Utils", () => {
           url: "./",
           siteName: defaultSiteMeta.title,
           type: "website",
+          images: ["https://IklanRayaLagi.com/og?type=default"],
         },
         twitter: {
           title: titleTemplate,
           description: mockSiteMeta.description,
           card: "summary_large_image",
+          images: ["https://IklanRayaLagi.com/og?type=default"],
         },
       };
 
@@ -77,11 +79,13 @@ describe("Utils", () => {
           url: "./",
           siteName: defaultSiteMeta.title,
           type: "website",
+          images: ["https://IklanRayaLagi.com/og?type=default"],
         },
         twitter: {
           title: titleTemplate,
           description: defaultSiteMeta.description,
           card: "summary_large_image",
+          images: ["https://IklanRayaLagi.com/og?type=default"],
         },
       };
 

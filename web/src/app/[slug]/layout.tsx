@@ -1,6 +1,6 @@
 import { IklanModel } from "@/models";
 import { PageContainer } from "@/ui/layouts";
-import { generateSiteMetadata } from "@/utils/siteMeta";
+import { generateSiteMetadata, getBaseUrl } from "@/utils/siteMeta";
 import { SlugChecker } from "@/utils/slugChecker";
 
 export async function generateMetadata({
@@ -9,12 +9,14 @@ export async function generateMetadata({
   params: { slug: string };
 }) {
   const { slug } = params;
+  const baseUrl = getBaseUrl();
 
   const isTahun = await SlugChecker.isSlugTahun(slug);
   if (isTahun) {
     return generateSiteMetadata({
       title: `Senarai iklan Raya tahun ${slug}`,
       description: `Tonton iklan-iklan Raya yang menarik pada tahun ${slug} di IklanRayaLagi, laman web yang punyai koleksi iklan Raya terbesar.`,
+      image: `${baseUrl}/og?type=tahun&tahun=${slug}`,
     });
   }
 
@@ -24,6 +26,7 @@ export async function generateMetadata({
     return generateSiteMetadata({
       title: `Senarai iklan Raya dari ${negara}`,
       description: `Tonton iklan-iklan Raya yang menarik dari ${negara} di IklanRayaLagi, laman web yang punyai koleksi iklan Raya terbesar.`,
+      image: `${baseUrl}/og?type=negara&negara=${slug}`,
     });
   }
 
@@ -33,10 +36,12 @@ export async function generateMetadata({
       slug.replaceAll("_", " "),
     );
     const namaOrganisasi = organisasi[0].organization;
+    const vidId = organisasi[0].id;
 
     return generateSiteMetadata({
       title: `Senarai iklan Raya daripada ${namaOrganisasi}`,
       description: `Tonton iklan-iklan Raya yang menarik daripada ${namaOrganisasi} di IklanRayaLago, laman web yang punyai koleksi iklan Raya terbesar.`,
+      image: `${baseUrl}/og?type=org&orgname=${encodeURIComponent(namaOrganisasi)}&vidid=${vidId}`,
     });
   }
 
@@ -44,6 +49,7 @@ export async function generateMetadata({
   return generateSiteMetadata({
     title: iklan?.title || "",
     description: `${iklan?.title} di IklanRayaLagi, pengkalan data iklan raya terbesar.`,
+    image: `${baseUrl}/og?type=iklan&vidid=${iklan?.id}&tajuk=${encodeURIComponent(iklan?.title || "")}`,
   });
 }
 

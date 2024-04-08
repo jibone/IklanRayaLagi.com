@@ -44,7 +44,7 @@ export default async function OGNegaraPage({ negara }: { negara: string }) {
 
           <div
             style={{
-              top: "90px",
+              top: "80px",
               fontSize: 80,
               display: "flex",
               color: "#aa9cf7",
@@ -69,7 +69,7 @@ export default async function OGNegaraPage({ negara }: { negara: string }) {
             <span
               style={{
                 color: "#4c8592",
-                marginLeft: "10px",
+                marginLeft: "30px",
                 fontSize: 90,
                 backgroundColor: "#fce0c1",
               }}

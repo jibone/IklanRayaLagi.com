@@ -4,6 +4,7 @@ import { PageContainer } from "@/ui/layouts";
 import { ChangelogPage } from "@/ui/pages";
 import { CompileMDXResult, compileMDX } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
+import { generateSiteMetadata } from "@/utils/siteMeta";
 
 const filesPath = `${process.cwd()}/changelogs`;
 
@@ -35,6 +36,13 @@ async function getChangelogProcessed(
   });
 
   return compiledContents;
+}
+
+export async function generateMetadata() {
+  return generateSiteMetadata({
+    title: `Changelog Laman Pengkalan Data Iklan Raya Terbesar.`,
+    description: "Koleksi changelog Iklan Raya Lagi",
+  });
 }
 
 export default async function Changelog() {
