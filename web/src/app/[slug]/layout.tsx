@@ -1,7 +1,10 @@
+import { cache } from "react";
 import { IklanModel } from "@/models";
 import { PageContainer } from "@/ui/layouts";
 import { generateSiteMetadata, getBaseUrl } from "@/utils/siteMeta";
 import { SlugChecker } from "@/utils/slugChecker";
+
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
@@ -32,9 +35,12 @@ export async function generateMetadata({
 
   const isSlugOrg = await SlugChecker.isSlugOrg(slug);
   if (isSlugOrg) {
-    const organisasi = await IklanModel.getSemuaIklanUntukOrganisasi(
-      slug.replaceAll("_", " "),
-    );
+    const getDariCache = cache(async () => {
+      return await IklanModel.getSemuaIklanUntukOrganisasi(
+        slug.replaceAll("_", " "),
+      );
+    });
+    const organisasi = await getDariCache();
     const namaOrganisasi = organisasi[0].organization;
     const vidId = organisasi[0].id;
 

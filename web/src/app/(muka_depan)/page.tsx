@@ -1,6 +1,9 @@
+import { cache } from "react";
 import { IklanModel } from "@/models";
 import { KoleksiHalaman } from "@/ui/koleksi";
 import { generateSiteMetadata } from "@/utils/siteMeta";
+
+export const revalidate = 3600;
 
 export async function generateMetadata() {
   return generateSiteMetadata({
@@ -11,7 +14,10 @@ export async function generateMetadata() {
 }
 
 export default async function MukaDepan() {
-  const semuaTahun = await IklanModel.getSemuaTahunan();
+  const getDariCache = cache(async () => {
+    return await IklanModel.getSemuaTahunan();
+  });
+  const semuaTahun = await getDariCache();
 
   return <KoleksiHalaman semuaTahun={semuaTahun} />;
 }

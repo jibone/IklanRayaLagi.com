@@ -1,10 +1,14 @@
+import { cache } from "react";
 import { IklanModel } from "@/models";
 import { IklanLainSlots } from "@/ui/slots";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export default async function IklanLainPage() {
-  const koleksiIklan = await IklanModel.getRandom();
+  const getDariCache = cache(async () => {
+    return await IklanModel.getRandom();
+  });
+  const koleksiIklan = await getDariCache();
 
   return <IklanLainSlots koleksiIklan={koleksiIklan} />;
 }

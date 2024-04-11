@@ -1,8 +1,9 @@
 import type { Iklan } from "@/db/schema/iklan";
+import { cache } from "react";
 import { IklanModel } from "@/models";
 import { KoleksiKadIklanTahunan } from "@/ui/koleksi";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 async function getSenaraiTahunan(): Promise<Iklan[]> {
   const dbResult = await IklanModel.getRandomDariTahun({
@@ -14,7 +15,10 @@ async function getSenaraiTahunan(): Promise<Iklan[]> {
 }
 
 export default async function IklanTahunIniPage() {
-  const senaraiIklan = await getSenaraiTahunan();
+  const getFromCache = cache(async () => {
+    return await getSenaraiTahunan();
+  });
+  const senaraiIklan = await getFromCache();
 
   return (
     <KoleksiKadIklanTahunan
