@@ -1,14 +1,21 @@
-import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { IklanModel } from "@/models";
 import { IklanLainSlots } from "@/ui/slots";
 
-export const revalidate = 3600;
+export default async function IklanLainPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = params;
 
-export default async function IklanLainPage() {
-  const getDariCache = cache(async () => {
-    return await IklanModel.getRandom();
-  });
-  const koleksiIklan = await getDariCache();
+  const getRandomCache = unstable_cache(
+    async () => IklanModel.getRandom(),
+    [`random-${slug}`],
+    { revalidate: 3600 },
+  );
+
+  const koleksiIklan = await getRandomCache();
 
   return <IklanLainSlots koleksiIklan={koleksiIklan} />;
 }

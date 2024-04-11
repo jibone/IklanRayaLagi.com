@@ -1,9 +1,7 @@
-import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { IklanModel } from "@/models";
 import { KoleksiHalaman } from "@/ui/koleksi";
 import { generateSiteMetadata } from "@/utils/siteMeta";
-
-export const revalidate = 3600;
 
 export async function generateMetadata() {
   return generateSiteMetadata({
@@ -14,9 +12,11 @@ export async function generateMetadata() {
 }
 
 export default async function MukaDepan() {
-  const getDariCache = cache(async () => {
-    return await IklanModel.getSemuaTahunan();
-  });
+  const getDariCache = unstable_cache(
+    async () => IklanModel.getSemuaTahunan(),
+    ["semua-tahunan"],
+    { revalidate: 3600 },
+  );
   const semuaTahun = await getDariCache();
 
   return <KoleksiHalaman semuaTahun={semuaTahun} />;
