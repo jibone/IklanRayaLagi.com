@@ -1,8 +1,9 @@
+import { cache } from "react";
 import type { SenaraiNegara } from "@/db/schema/iklan";
 import { IklanModel } from "@/models";
 import { NegaraPage } from "@/ui/pages";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export default async function IklanNegaraPage({
   params,
@@ -10,8 +11,13 @@ export default async function IklanNegaraPage({
   params: { slug: string };
 }) {
   const { slug } = params;
-  const semuaNegara = await IklanModel.getSemuaNegara();
-  const semuaIklanNegara = await IklanModel.getSemuaIklanNegara(slug);
+  const getDariCache = cache(async (slug: string) => {
+    return {
+      semuaNegara: await IklanModel.getSemuaNegara(),
+      semuaIklanNegara: await IklanModel.getSemuaIklanNegara(slug),
+    };
+  });
+  const { semuaNegara, semuaIklanNegara } = await getDariCache(slug);
 
   return (
     <NegaraPage

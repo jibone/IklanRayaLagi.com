@@ -1,7 +1,8 @@
+import { cache } from "react";
 import { IklanModel } from "@/models";
 import { TahunPage } from "@/ui/pages";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export default async function IklanTahunanPage({
   params,
@@ -9,8 +10,13 @@ export default async function IklanTahunanPage({
   params: { slug: string };
 }) {
   const { slug } = params;
-  const senaraiSemuaTahun = await IklanModel.getSemuaTahunan();
-  const senaraiSemuaIklan = await IklanModel.getSemuaIklanUntukTahun(slug);
+  const getDariCache = cache(async (slug: string) => {
+    return {
+      senaraiSemuaTahun: await IklanModel.getSemuaTahunan(),
+      senaraiSemuaIklan: await IklanModel.getSemuaIklanUntukTahun(slug),
+    };
+  });
+  const { senaraiSemuaTahun, senaraiSemuaIklan } = await getDariCache(slug);
 
   return (
     <TahunPage

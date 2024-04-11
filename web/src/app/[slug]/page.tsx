@@ -1,12 +1,18 @@
+import { cache } from "react";
 import { IklanModel } from "@/models";
 import { KoleksiHalaman } from "@/ui/koleksi";
 import { notFound } from "next/navigation";
 import { SlugChecker } from "@/utils/slugChecker";
 
+export const revalidate = 3600;
+
 export default async function Entry({ params }: { params: { slug: string } }) {
   const { slug } = params;
 
-  const senaraiSemuaTahun = await IklanModel.getSemuaTahunan();
+  const getDariCache = cache(async () => {
+    return await IklanModel.getSemuaTahunan();
+  });
+  const senaraiSemuaTahun = await getDariCache();
 
   const isTahun = await SlugChecker.isSlugTahun(slug);
   if (isTahun) return <KoleksiHalaman semuaTahun={senaraiSemuaTahun} />;
