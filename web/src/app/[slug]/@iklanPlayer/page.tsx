@@ -1,4 +1,4 @@
-import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { IklanModel } from "@/models";
 import { IklanPlayerSlots } from "@/ui/slots";
 
@@ -8,10 +8,12 @@ export default async function IklanPlayerPage({
   params: { slug: string };
 }) {
   const { slug } = params;
-  const getDariCcahe = cache(async (slug: string) => {
-    return await IklanModel.getIklanBySlug(slug);
-  });
-  const iklanResult = await getDariCcahe(slug);
+  const getDariCache = unstable_cache(
+    async (slug: string) => IklanModel.getIklanBySlug(slug),
+    [`iklan-${slug}`],
+    { revalidate: 3600 },
+  );
+  const iklanResult = await getDariCache(slug);
 
   if (iklanResult === undefined) {
     return;

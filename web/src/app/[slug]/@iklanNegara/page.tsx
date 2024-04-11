@@ -1,9 +1,7 @@
-import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import type { SenaraiNegara } from "@/db/schema/iklan";
 import { IklanModel } from "@/models";
 import { NegaraPage } from "@/ui/pages";
-
-export const revalidate = 3600;
 
 export default async function IklanNegaraPage({
   params,
@@ -11,13 +9,20 @@ export default async function IklanNegaraPage({
   params: { slug: string };
 }) {
   const { slug } = params;
-  const getDariCache = cache(async (slug: string) => {
-    return {
-      semuaNegara: await IklanModel.getSemuaNegara(),
-      semuaIklanNegara: await IklanModel.getSemuaIklanNegara(slug),
-    };
-  });
-  const { semuaNegara, semuaIklanNegara } = await getDariCache(slug);
+
+  const getSemuaNegaraCache = unstable_cache(
+    async () => IklanModel.getSemuaNegara(),
+    ["senarai-semua-negara"],
+    { revalidate: 3600 },
+  );
+  const getSemuaIklanNegaraCache = unstable_cache(
+    async (slug: string) => IklanModel.getSemuaIklanNegara(slug),
+    [`senarai-semua-iklan-untuk-negara-${slug}`],
+    { revalidate: 3600 },
+  );
+
+  const semuaNegara = await getSemuaNegaraCache();
+  const semuaIklanNegara = await getSemuaIklanNegaraCache(slug);
 
   return (
     <NegaraPage

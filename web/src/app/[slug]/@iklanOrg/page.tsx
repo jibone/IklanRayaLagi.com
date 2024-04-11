@@ -1,9 +1,7 @@
-import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { IklanModel } from "@/models";
 import { SlugChecker } from "@/utils/slugChecker";
 import { OrganisasiPage } from "@/ui/pages";
-
-export const revalidate = 3600;
 
 export default async function IklanOrgPage({
   params,
@@ -16,15 +14,20 @@ export default async function IklanOrgPage({
   if (!isOrg) return;
 
   const organisasi = slug.replaceAll("_", " ");
-  const getDariCache = cache(async (organisasi: string) => {
-    return {
-      semuaNamaOrganisasi: await IklanModel.getSemuaOrganisasi(false, false),
-      semuaIklanOrganisasi:
-        await IklanModel.getSemuaIklanUntukOrganisasi(organisasi),
-    };
-  });
-  const { semuaNamaOrganisasi, semuaIklanOrganisasi } =
-    await getDariCache(organisasi);
+  const getSemuaOrganisasiCache = unstable_cache(
+    async () => IklanModel.getSemuaOrganisasi(false, false),
+    ["senarai-semua-org"],
+    { revalidate: 3600 },
+  );
+  const getSemuaIklanUntukOrganisasiCache = unstable_cache(
+    async (organisasi: string) =>
+      IklanModel.getSemuaIklanUntukOrganisasi(organisasi),
+    [`senarai-semua-iklan-untuk-${organisasi}`],
+    { revalidate: 3600 },
+  );
+  const semuaNamaOrganisasi = await getSemuaOrganisasiCache();
+  const semuaIklanOrganisasi =
+    await getSemuaIklanUntukOrganisasiCache(organisasi);
 
   const semuaOrganisasiBersamaSlug = semuaNamaOrganisasi.map((o) => {
     return {

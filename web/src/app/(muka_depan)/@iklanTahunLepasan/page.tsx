@@ -1,9 +1,7 @@
 import type { Iklan } from "@/db/schema/iklan";
-import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { IklanModel } from "@/models";
 import { KoleksiKadIklanTahunan } from "@/ui/koleksi";
-
-export const revalidate = 3600;
 
 async function getSenaraiTahunLepas(): Promise<Iklan[]> {
   const dbResult = await IklanModel.getRandomDariTahun({
@@ -15,9 +13,11 @@ async function getSenaraiTahunLepas(): Promise<Iklan[]> {
 }
 
 export default async function IklanTahunLepasanSlot() {
-  const getFromCache = cache(async () => {
-    return await getSenaraiTahunLepas();
-  });
+  const getFromCache = unstable_cache(
+    async () => getSenaraiTahunLepas(),
+    ["senarai-iklan-tahun-lepas"],
+    { revalidate: 3600 },
+  );
   const senaraiIklan = await getFromCache();
 
   return (

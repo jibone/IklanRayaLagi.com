@@ -1,8 +1,6 @@
-import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { IklanModel } from "@/models";
 import { TahunPage } from "@/ui/pages";
-
-export const revalidate = 3600;
 
 export default async function IklanTahunanPage({
   params,
@@ -10,13 +8,18 @@ export default async function IklanTahunanPage({
   params: { slug: string };
 }) {
   const { slug } = params;
-  const getDariCache = cache(async (slug: string) => {
-    return {
-      senaraiSemuaTahun: await IklanModel.getSemuaTahunan(),
-      senaraiSemuaIklan: await IklanModel.getSemuaIklanUntukTahun(slug),
-    };
-  });
-  const { senaraiSemuaTahun, senaraiSemuaIklan } = await getDariCache(slug);
+  const getSemuaTahunanCache = unstable_cache(
+    async () => IklanModel.getSemuaTahunan(),
+    ["senarai-semua-tahunan"],
+    { revalidate: 3600 },
+  );
+  const getSemuaIklanUntukTahunCache = unstable_cache(
+    async (slug: string) => IklanModel.getSemuaIklanUntukTahun(slug),
+    [`senarai-semua-iklan-untuk-tahun-${slug}`],
+    { revalidate: 3600 },
+  );
+  const senaraiSemuaTahun = await getSemuaTahunanCache();
+  const senaraiSemuaIklan = await getSemuaIklanUntukTahunCache(slug);
 
   return (
     <TahunPage
