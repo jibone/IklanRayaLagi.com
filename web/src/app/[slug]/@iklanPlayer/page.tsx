@@ -11,7 +11,7 @@ export default async function IklanPlayerPage({
   const getDariCache = unstable_cache(
     async (slug: string) => IklanModel.getIklanBySlug(slug),
     [`iklan-${slug}`],
-    { revalidate: 3600 },
+    { revalidate: 43200 }, // 12 hours.
   );
   const iklanResult = await getDariCache(slug);
 

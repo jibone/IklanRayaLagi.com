@@ -1,4 +1,4 @@
-import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { IklanModel } from "@/models";
 import { PageContainer } from "@/ui/layouts";
 import { generateSiteMetadata, getBaseUrl } from "@/utils/siteMeta";
@@ -35,11 +35,12 @@ export async function generateMetadata({
 
   const isSlugOrg = await SlugChecker.isSlugOrg(slug);
   if (isSlugOrg) {
-    const getDariCache = cache(async () => {
-      return await IklanModel.getSemuaIklanUntukOrganisasi(
-        slug.replaceAll("_", " "),
-      );
-    });
+    const getDariCache = unstable_cache(
+      async () =>
+        IklanModel.getSemuaIklanUntukOrganisasi(slug.replaceAll("_", " ")),
+      [`semua-iklan-dari-org-${slug}`],
+      { revalidate: 3600 },
+    );
     const organisasi = await getDariCache();
     const namaOrganisasi = organisasi[0].organization;
     const vidId = organisasi[0].id;
@@ -59,7 +60,7 @@ export async function generateMetadata({
   });
 }
 
-export default async function EntryLoading({
+export default async function EntryLayout({
   children,
   iklanPlayer,
   iklanLain,

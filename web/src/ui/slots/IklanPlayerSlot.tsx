@@ -22,7 +22,7 @@ export default function IklanPlayerSlots({ iklanRaya }: { iklanRaya: Iklan }) {
           <Player videoSrc={iklanSrc} />
         </div>
         <div className="md:w-2/5 mt-4 md:mt-0 md:px-3 lg:pl-5">
-          <div className="font-semibold bg-yellow-500 text-2xl md:text-4xl lg:text-6xl">
+          <div className="font-semibold bg-yellow-500 text-2xl md:text-4xl lg:text-4xl">
             {iklanRaya.title}
           </div>
 

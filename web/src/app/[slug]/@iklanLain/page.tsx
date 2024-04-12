@@ -12,7 +12,7 @@ export default async function IklanLainPage({
   const getRandomCache = unstable_cache(
     async () => IklanModel.getRandom(),
     [`random-${slug}`],
-    { revalidate: 3600 },
+    { revalidate: 7200 },
   );
 
   const koleksiIklan = await getRandomCache();
