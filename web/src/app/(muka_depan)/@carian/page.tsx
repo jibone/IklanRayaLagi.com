@@ -14,7 +14,7 @@ export default async function MukaDepanCarian() {
   const getDariCache = unstable_cache(
     async () => getSemuaIklan(),
     ["semua-iklan"],
-    { revalidate: 3600 },
+    { revalidate: 600 },
   );
   const mukaDepanProps = {
     semuaIklan: await getDariCache(),
