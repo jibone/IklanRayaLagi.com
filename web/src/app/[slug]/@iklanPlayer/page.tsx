@@ -1,6 +1,7 @@
 import { unstable_cache } from "next/cache";
 import { IklanModel } from "@/models";
 import { IklanPlayerSlots } from "@/ui/slots";
+import { CacheSelama } from "@/utils/cache";
 
 export default async function IklanPlayerPage({
   params,
@@ -8,10 +9,14 @@ export default async function IklanPlayerPage({
   params: { slug: string };
 }) {
   const { slug } = params;
+  const getIklanBySlug = (slug: string) => {
+    console.log(`--> getIklanBySlug() slug: ${slug}`);
+    return IklanModel.getIklanBySlug(slug);
+  };
   const getDariCache = unstable_cache(
-    async (slug: string) => IklanModel.getIklanBySlug(slug),
+    async (slug: string) => getIklanBySlug(slug),
     [`iklan-${slug}`],
-    { revalidate: 43200 }, // 12 hours.
+    { revalidate: CacheSelama._48jam() },
   );
   const iklanResult = await getDariCache(slug);
 

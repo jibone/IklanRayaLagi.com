@@ -2,6 +2,7 @@ import { unstable_cache } from "next/cache";
 import { IklanModel } from "@/models";
 import { KoleksiHalaman } from "@/ui/koleksi";
 import { generateSiteMetadata } from "@/utils/siteMeta";
+import { CacheSelama } from "@/utils/cache";
 
 export async function generateMetadata() {
   return generateSiteMetadata({
@@ -12,10 +13,15 @@ export async function generateMetadata() {
 }
 
 export default async function MukaDepan() {
+  const getSemuaTahunan = () => {
+    console.log(`--> getSemuaTahunan()`);
+    return IklanModel.getSemuaTahunan();
+  };
+
   const getDariCache = unstable_cache(
-    async () => IklanModel.getSemuaTahunan(),
+    async () => getSemuaTahunan(),
     ["semua-tahunan"],
-    { revalidate: 3600 },
+    { revalidate: CacheSelama._48jam() },
   );
   const semuaTahun = await getDariCache();
 

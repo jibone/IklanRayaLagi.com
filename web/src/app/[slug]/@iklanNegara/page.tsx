@@ -2,6 +2,7 @@ import { unstable_cache } from "next/cache";
 import type { SenaraiNegara } from "@/db/schema/iklan";
 import { IklanModel } from "@/models";
 import { NegaraPage } from "@/ui/pages";
+import { CacheSelama } from "@/utils/cache";
 
 export default async function IklanNegaraPage({
   params,
@@ -10,15 +11,23 @@ export default async function IklanNegaraPage({
 }) {
   const { slug } = params;
 
+  const getSemuaNegara = () => {
+    console.log(`--> getSemuaNegara()`);
+    return IklanModel.getSemuaNegara();
+  };
   const getSemuaNegaraCache = unstable_cache(
-    async () => IklanModel.getSemuaNegara(),
+    async () => getSemuaNegara(),
     ["senarai-semua-negara"],
-    { revalidate: 3600 },
+    { revalidate: CacheSelama._48jam() },
   );
+  const getSemuaIklanNegara = (slug: string) => {
+    console.log(`--> getSemuaIklanNegara()`);
+    return IklanModel.getSemuaIklanNegara(slug);
+  };
   const getSemuaIklanNegaraCache = unstable_cache(
-    async (slug: string) => IklanModel.getSemuaIklanNegara(slug),
+    async (slug: string) => getSemuaIklanNegara(slug),
     [`senarai-semua-iklan-untuk-negara-${slug}`],
-    { revalidate: 3600 },
+    { revalidate: CacheSelama._24jam() },
   );
 
   const semuaNegara = await getSemuaNegaraCache();
