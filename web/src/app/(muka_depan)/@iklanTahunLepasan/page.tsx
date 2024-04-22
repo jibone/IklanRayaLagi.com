@@ -4,6 +4,7 @@ import { IklanModel } from "@/models";
 import { KoleksiKadIklanTahunan } from "@/ui/koleksi";
 
 async function getSenaraiTahunLepas(): Promise<Iklan[]> {
+  console.log(`--> getSenaraiTahunLepas()`);
   const dbResult = await IklanModel.getRandomDariTahun({
     kecualiTahun: ["2024"],
     limit: 6,

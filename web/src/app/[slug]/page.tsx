@@ -3,15 +3,22 @@ import { IklanModel } from "@/models";
 import { KoleksiHalaman } from "@/ui/koleksi";
 import { notFound } from "next/navigation";
 import { SlugChecker } from "@/utils/slugChecker";
+import { CacheSelama } from "@/utils/cache";
 
 export default async function Entry({ params }: { params: { slug: string } }) {
   const { slug } = params;
 
+  const getSemuaTahunan = () => {
+    console.log(`--> getSemuaTahunan()`);
+    return IklanModel.getSemuaTahunan();
+  };
+
   const getDariCache = unstable_cache(
-    async () => IklanModel.getSemuaTahunan(),
+    async () => getSemuaTahunan(),
     ["senarai-semua-tahunan"],
-    { revalidate: 3600 },
+    { revalidate: CacheSelama._48jam() },
   );
+
   const senaraiSemuaTahun = await getDariCache();
 
   const isTahun = await SlugChecker.isSlugTahun(slug);
