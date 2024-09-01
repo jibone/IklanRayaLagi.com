@@ -17,7 +17,7 @@ export default async function IklanLainPage({
   const getRandomCache = unstable_cache(
     async () => getRandom(),
     [`random-${slug}`],
-    { revalidate: CacheSelama._6jam() },
+    { revalidate: CacheSelama._120jam() },
   );
 
   const koleksiIklan = await getRandomCache();

@@ -16,7 +16,7 @@ export default async function IklanPlayerPage({
   const getDariCache = unstable_cache(
     async (slug: string) => getIklanBySlug(slug),
     [`iklan-${slug}`],
-    { revalidate: CacheSelama._48jam() },
+    { revalidate: CacheSelama._120jam() },
   );
   const iklanResult = await getDariCache(slug);
 

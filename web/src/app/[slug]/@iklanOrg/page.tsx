@@ -22,7 +22,7 @@ export default async function IklanOrgPage({
   const getSemuaOrganisasiCache = unstable_cache(
     async () => getSemuaOrganisasi(),
     ["senarai-semua-org"],
-    { revalidate: CacheSelama._24jam() },
+    { revalidate: CacheSelama._120jam() },
   );
   const getSemuaIklanUntukOrganisasi = (organisasi: string) => {
     console.log(`--> getSemuaIklanUntukOrganisasi()`);
@@ -31,7 +31,7 @@ export default async function IklanOrgPage({
   const getSemuaIklanUntukOrganisasiCache = unstable_cache(
     async (organisasi: string) => getSemuaIklanUntukOrganisasi(organisasi),
     [`senarai-semua-iklan-untuk-${organisasi}`],
-    { revalidate: CacheSelama._24jam() },
+    { revalidate: CacheSelama._120jam() },
   );
   const semuaNamaOrganisasi = await getSemuaOrganisasiCache();
   const semuaIklanOrganisasi =

@@ -18,7 +18,7 @@ export default async function IklanNegaraPage({
   const getSemuaNegaraCache = unstable_cache(
     async () => getSemuaNegara(),
     ["senarai-semua-negara"],
-    { revalidate: CacheSelama._48jam() },
+    { revalidate: CacheSelama._120jam() },
   );
   const getSemuaIklanNegara = (slug: string) => {
     console.log(`--> getSemuaIklanNegara()`);
@@ -27,7 +27,7 @@ export default async function IklanNegaraPage({
   const getSemuaIklanNegaraCache = unstable_cache(
     async (slug: string) => getSemuaIklanNegara(slug),
     [`senarai-semua-iklan-untuk-negara-${slug}`],
-    { revalidate: CacheSelama._24jam() },
+    { revalidate: CacheSelama._120jam() },
   );
 
   const semuaNegara = await getSemuaNegaraCache();
