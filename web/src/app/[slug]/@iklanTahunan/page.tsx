@@ -16,7 +16,7 @@ export default async function IklanTahunanPage({
   const getSemuaTahunanCache = unstable_cache(
     async () => getSemuaTahunan(),
     ["senarai-semua-tahunan"],
-    { revalidate: CacheSelama._48jam() },
+    { revalidate: CacheSelama._120jam() },
   );
   const getSemuaIklanUntukTahun = (slug: any) => {
     console.log(`--> getSemuaIklanUntukTahun() slug: ${slug}`);
@@ -25,7 +25,7 @@ export default async function IklanTahunanPage({
   const getSemuaIklanUntukTahunCache = unstable_cache(
     async (slug: string) => getSemuaIklanUntukTahun(slug),
     [`senarai-semua-iklan-untuk-tahun-${slug}`],
-    { revalidate: CacheSelama._24jam() },
+    { revalidate: CacheSelama._120jam() },
   );
   const senaraiSemuaTahun = await getSemuaTahunanCache();
   const senaraiSemuaIklan = await getSemuaIklanUntukTahunCache(slug);

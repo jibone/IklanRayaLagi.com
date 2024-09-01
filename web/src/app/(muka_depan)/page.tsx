@@ -21,7 +21,7 @@ export default async function MukaDepan() {
   const getDariCache = unstable_cache(
     async () => getSemuaTahunan(),
     ["semua-tahunan"],
-    { revalidate: CacheSelama._48jam() },
+    { revalidate: CacheSelama._120jam() },
   );
   const semuaTahun = await getDariCache();
 

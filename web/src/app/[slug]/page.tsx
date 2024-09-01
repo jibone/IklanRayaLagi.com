@@ -16,7 +16,7 @@ export default async function Entry({ params }: { params: { slug: string } }) {
   const getDariCache = unstable_cache(
     async () => getSemuaTahunan(),
     ["senarai-semua-tahunan"],
-    { revalidate: CacheSelama._48jam() },
+    { revalidate: CacheSelama._120jam() },
   );
 
   const senaraiSemuaTahun = await getDariCache();

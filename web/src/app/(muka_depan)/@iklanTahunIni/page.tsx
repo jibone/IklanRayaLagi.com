@@ -19,7 +19,7 @@ export default async function IklanTahunIniPage() {
   const getDariCache = unstable_cache(
     async () => getSenaraiTahunan(),
     ["senarai-iklan-tahunan"],
-    { revalidate: CacheSelama._48jam() },
+    { revalidate: CacheSelama._120jam() },
   );
   const senaraiIklan = await getDariCache();
 

@@ -17,7 +17,7 @@ export default async function IklanTahunLepasanSlot() {
   const getFromCache = unstable_cache(
     async () => getSenaraiTahunLepas(),
     ["senarai-iklan-tahun-lepas"],
-    { revalidate: 3600 },
+    { revalidate: 3600 * 120 },
   );
   const senaraiIklan = await getFromCache();
 
